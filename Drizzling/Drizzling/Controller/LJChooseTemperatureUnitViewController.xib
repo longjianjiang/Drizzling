@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LJChooseTemperatureUnitViewController" customModule="Drizzling" customModuleProvider="target">
+            <connections>
+                <outlet property="celsiusBtn" destination="AZ8-0I-OFj" id="ZMw-gh-CIX"/>
+                <outlet property="fahrenheitBtn" destination="plP-aX-4vX" id="pf9-Sc-VMv"/>
+                <outlet property="msgLabel" destination="nN5-vg-OMM" id="mlF-6a-Qra"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nN5-vg-OMM">
+                    <rect key="frame" x="58" y="208" width="259" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="OBe-Tc-ca2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plP-aX-4vX">
+                    <rect key="frame" x="58" y="358" width="259" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="H3k-Ne-813"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="didClickBtn:" destination="-1" eventType="touchDown" id="o2W-dU-S2g"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZ8-0I-OFj">
+                    <rect key="frame" x="58" y="428" width="259" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Oac-RE-GiX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="didClickBtn:" destination="-1" eventType="touchUpInside" id="6NE-aB-Tve"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="AZ8-0I-OFj" firstAttribute="top" secondItem="plP-aX-4vX" secondAttribute="bottom" constant="20" id="8hi-TQ-MK8"/>
+                <constraint firstAttribute="trailingMargin" secondItem="AZ8-0I-OFj" secondAttribute="trailing" constant="50" id="F7H-Fi-jqi"/>
+                <constraint firstItem="nN5-vg-OMM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="200" id="PBe-9u-ot7"/>
+                <constraint firstItem="AZ8-0I-OFj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="50" id="bOH-9e-6hd"/>
+                <constraint firstItem="plP-aX-4vX" firstAttribute="top" secondItem="nN5-vg-OMM" secondAttribute="bottom" constant="100" id="ePJ-Iu-mAP"/>
+                <constraint firstItem="plP-aX-4vX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="50" id="hcZ-5d-plk"/>
+                <constraint firstAttribute="trailingMargin" secondItem="nN5-vg-OMM" secondAttribute="trailing" constant="50" id="mDz-6D-x5g"/>
+                <constraint firstAttribute="trailingMargin" secondItem="plP-aX-4vX" secondAttribute="trailing" constant="50" id="mIn-zl-2J8"/>
+                <constraint firstItem="nN5-vg-OMM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="50" id="weo-rz-2rO"/>
+            </constraints>
+            <point key="canvasLocation" x="35.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

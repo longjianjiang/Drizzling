@@ -1,0 +1,5 @@
+github "Alamofire/Alamofire"
+github "SnapKit/SnapKit"
+github "ReactiveX/RxSwift"
+github "SwiftyJSON/SwiftyJSON"
+
