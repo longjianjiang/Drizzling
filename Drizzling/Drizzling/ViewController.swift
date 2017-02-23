@@ -9,6 +9,9 @@
 import UIKit
 import MapKit
 import Alamofire
+import SwiftyJSON
+import ObjectMapper
+
 
 class ViewController: UIViewController {
 
@@ -25,6 +28,8 @@ class ViewController: UIViewController {
     
     var currentCity: String! = nil
     var currentCountry: String! = nil
+    var forecastDayArr: [ForecastDay] = []
+    
     
     
     override func viewDidLoad() {
@@ -32,16 +37,19 @@ class ViewController: UIViewController {
         
         locationManager.startUpdatingLocation()
         
-        Alamofire.request("https://httpbin.org/get").responseJSON { response in
-            print(response.request)  // original URL request
-            print(response.response) // HTTP URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-            
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
-            }
-        }
+//        Alamofire.request("https://api.wunderground.com/api/38e25298c490dffc/forecast/q/China/Nanjing.json").responseJSON { (response) in
+//            if let JSONObject = response.result.value {
+//                let forecastDays = JSON(JSONObject)["forecast"]["simpleforecast"]["forecastday"].array
+//                for obj in forecastDays! {
+//                    self.forecastDayArr.append(ForecastDay(JSONString: obj.rawString()!)!)
+//                }
+//                
+//                
+//            }
+//        }
+        
+       
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		117C02151E5ECB7300AB4835 /* ForecastDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C02141E5ECB7300AB4835 /* ForecastDay.swift */; };
+		117C02181E5ECBE200AB4835 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117C02161E5ECBC100AB4835 /* ObjectMapper.framework */; };
+		117C02191E5ECBE200AB4835 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117C02161E5ECBC100AB4835 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11FA07521E5BDB8C00A54697 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA07481E5BDAEE00A54697 /* Alamofire.framework */; };
 		11FA07531E5BDB8C00A54697 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA07481E5BDAEE00A54697 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11FA07541E5BDB8C00A54697 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA07491E5BDAEE00A54697 /* RxCocoa.framework */; };
@@ -33,6 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				117C02191E5ECBE200AB4835 /* ObjectMapper.framework in Embed Frameworks */,
 				11FA07551E5BDB8C00A54697 /* RxCocoa.framework in Embed Frameworks */,
 				11FA07531E5BDB8C00A54697 /* Alamofire.framework in Embed Frameworks */,
 				11FA07571E5BDB8C00A54697 /* RxSwift.framework in Embed Frameworks */,
@@ -45,6 +49,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		117C02141E5ECB7300AB4835 /* ForecastDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDay.swift; sourceTree = "<group>"; };
+		117C02161E5ECBC100AB4835 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
 		11FA07481E5BDAEE00A54697 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		11FA07491E5BDAEE00A54697 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = "<group>"; };
 		11FA074A1E5BDAEE00A54697 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = "<group>"; };
@@ -66,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117C02181E5ECBE200AB4835 /* ObjectMapper.framework in Frameworks */,
 				11FA07541E5BDB8C00A54697 /* RxCocoa.framework in Frameworks */,
 				11FA07521E5BDB8C00A54697 /* Alamofire.framework in Frameworks */,
 				11FA07561E5BDB8C00A54697 /* RxSwift.framework in Frameworks */,
@@ -77,9 +84,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		117C02131E5ECA8100AB4835 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				117C02141E5ECB7300AB4835 /* ForecastDay.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		117C021B1E5EE8B900AB4835 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		11FA073D1E5BD86D00A54697 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				117C02161E5ECBC100AB4835 /* ObjectMapper.framework */,
 				11FA07481E5BDAEE00A54697 /* Alamofire.framework */,
 				11FA07491E5BDAEE00A54697 /* RxCocoa.framework */,
 				11FA074A1E5BDAEE00A54697 /* RxSwift.framework */,
@@ -108,6 +131,8 @@
 		FB2C1C391E49FABC00A11521 /* Drizzling */ = {
 			isa = PBXGroup;
 			children = (
+				117C021B1E5EE8B900AB4835 /* Networking */,
+				117C02131E5ECA8100AB4835 /* Model */,
 				11FA073D1E5BD86D00A54697 /* Vendor */,
 				FB2C1C4D1E49FDE800A11521 /* Controller */,
 				FB2C1C4C1E49FDCF00A11521 /* View */,
@@ -213,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB2C1C3D1E49FABC00A11521 /* ViewController.swift in Sources */,
+				117C02151E5ECB7300AB4835 /* ForecastDay.swift in Sources */,
 				FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */,
 				FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */,
 			);
