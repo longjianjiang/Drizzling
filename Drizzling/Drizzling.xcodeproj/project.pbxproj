@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		117C02151E5ECB7300AB4835 /* ForecastDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C02141E5ECB7300AB4835 /* ForecastDay.swift */; };
 		117C02181E5ECBE200AB4835 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117C02161E5ECBC100AB4835 /* ObjectMapper.framework */; };
 		117C02191E5ECBE200AB4835 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117C02161E5ECBC100AB4835 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		117C022F1E5FEBD600AB4835 /* DrizzlingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C022E1E5FEBD600AB4835 /* DrizzlingRouter.swift */; };
+		117C02311E5FEC0400AB4835 /* DrizzlingFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C02301E5FEC0400AB4835 /* DrizzlingFetcher.swift */; };
+		117C02331E5FEC1F00AB4835 /* DrizzlingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C02321E5FEC1F00AB4835 /* DrizzlingModel.swift */; };
 		11FA07521E5BDB8C00A54697 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA07481E5BDAEE00A54697 /* Alamofire.framework */; };
 		11FA07531E5BDB8C00A54697 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA07481E5BDAEE00A54697 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11FA07541E5BDB8C00A54697 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA07491E5BDAEE00A54697 /* RxCocoa.framework */; };
@@ -49,8 +51,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		117C02141E5ECB7300AB4835 /* ForecastDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDay.swift; sourceTree = "<group>"; };
 		117C02161E5ECBC100AB4835 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
+		117C022E1E5FEBD600AB4835 /* DrizzlingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrizzlingRouter.swift; path = Drizzling/Resources/DrizzlingRouter.swift; sourceTree = SOURCE_ROOT; };
+		117C02301E5FEC0400AB4835 /* DrizzlingFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrizzlingFetcher.swift; path = Drizzling/Resources/DrizzlingFetcher.swift; sourceTree = SOURCE_ROOT; };
+		117C02321E5FEC1F00AB4835 /* DrizzlingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrizzlingModel.swift; sourceTree = "<group>"; };
 		11FA07481E5BDAEE00A54697 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		11FA07491E5BDAEE00A54697 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = "<group>"; };
 		11FA074A1E5BDAEE00A54697 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = "<group>"; };
@@ -87,7 +91,7 @@
 		117C02131E5ECA8100AB4835 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				117C02141E5ECB7300AB4835 /* ForecastDay.swift */,
+				117C02321E5FEC1F00AB4835 /* DrizzlingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -95,6 +99,8 @@
 		117C021B1E5EE8B900AB4835 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				117C022E1E5FEBD600AB4835 /* DrizzlingRouter.swift */,
+				117C02301E5FEC0400AB4835 /* DrizzlingFetcher.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -238,7 +244,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB2C1C3D1E49FABC00A11521 /* ViewController.swift in Sources */,
-				117C02151E5ECB7300AB4835 /* ForecastDay.swift in Sources */,
+				117C02331E5FEC1F00AB4835 /* DrizzlingModel.swift in Sources */,
+				117C02311E5FEC0400AB4835 /* DrizzlingFetcher.swift in Sources */,
+				117C022F1E5FEBD600AB4835 /* DrizzlingRouter.swift in Sources */,
 				FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */,
 				FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */,
 			);

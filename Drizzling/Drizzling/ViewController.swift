@@ -30,6 +30,11 @@ class ViewController: UIViewController {
     var currentCountry: String! = nil
     var forecastDayArr: [ForecastDay] = []
     
+    var router = DrizzlingRouter()
+    var fetcher = DrizzlingFetcher()
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -37,16 +42,17 @@ class ViewController: UIViewController {
         
         locationManager.startUpdatingLocation()
         
-//        Alamofire.request("https://api.wunderground.com/api/38e25298c490dffc/forecast/q/China/Nanjing.json").responseJSON { (response) in
-//            if let JSONObject = response.result.value {
-//                let forecastDays = JSON(JSONObject)["forecast"]["simpleforecast"]["forecastday"].array
-//                for obj in forecastDays! {
-//                    self.forecastDayArr.append(ForecastDay(JSONString: obj.rawString()!)!)
-//                }
-//                
-//                
-//            }
-//        }
+        
+        let forecastThreeDayURL = router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffs", CountryOrProvinceName: "China", cityName: "Nanjing")
+        fetcher.getThreeDayForecast(url: forecastThreeDayURL) { (result) in
+            switch result {
+            case let .success(_days):
+                self.forecastDayArr = _days;
+            case let .failure(_error):
+                print("Error fetching days: \(_error)")
+            }
+        }
+
         
        
         
