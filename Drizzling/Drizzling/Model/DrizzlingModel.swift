@@ -47,8 +47,8 @@ import ObjectMapper
 class ForecastDay: Mappable {
     var forecastCondition: String?
     var forecastDate: [String : AnyObject]?
-    var forecastHighTemperature: [String : AnyObject]?
-    var forecastLowTemperature: [String : AnyObject]?
+    var forecastHighTemperature: [String : String]?
+    var forecastLowTemperature: [String : String]?
     var forecastIcon: String?
     
     func mapping(map: Map) {

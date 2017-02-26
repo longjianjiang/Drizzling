@@ -12,9 +12,21 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 import Social
+import SnapKit
+import Kingfisher
 
 class ViewController: UIViewController {
 
+    //MARK: - property
+    var currentCity: String! = nil
+    var currentCountry: String! = nil
+    var currentProvince: String! = nil
+    
+    var forecastDayArr: [ForecastDay] = []
+    
+    var router = DrizzlingRouter()
+    var fetcher = DrizzlingFetcher()
+    
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self
@@ -26,20 +38,74 @@ class ViewController: UIViewController {
         return CLGeocoder()
     }()
     
-    var currentCity: String! = nil
-    var currentCountry: String! = nil
-    var forecastDayArr: [ForecastDay] = []
-    
-    var router = DrizzlingRouter()
-    var fetcher = DrizzlingFetcher()
-
     lazy var pressShare: UILongPressGestureRecognizer = {
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(showShareView))
         gesture.minimumPressDuration = 1
         return gesture
     }()
     
+    lazy var cityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = UIColor.white
+        return label
+    }()
     
+    lazy var conditionImageview: UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+//        imgView.kf.setImage(with: URL(string: "https://icons.wxug.com/i/c/k/clear.gif"))
+        return imgView
+    }()
+    lazy var temperatureLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 90)
+        label.numberOfLines = 0
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    
+    //MARK: - life cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        locationManager.startUpdatingLocation()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.init(colorLiteralRed: 69/255.0, green: 69/255.0, blue: 69/255.0, alpha: 1.0)
+        self.view.addSubview(cityLabel)
+        self.view.addSubview(conditionImageview)
+        self.view.addSubview(temperatureLabel)
+        conditionImageview.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(40)
+            make.left.right.equalTo(self.view)
+            make.height.equalTo(80)
+        }
+        temperatureLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.conditionImageview.snp.bottom).offset(20)
+            make.left.right.equalTo(self.view)
+            make.height.equalTo(100)
+        }
+        cityLabel.snp.makeConstraints { (maker) in
+            maker.bottom.equalTo(self.view).offset(-50)
+            maker.left.right.equalTo(self.view)
+            maker.height.equalTo(40)
+        }
+        
+        self.view.addGestureRecognizer(pressShare)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    //MARK: - response method
     func showShareView() {
         if (pressShare.state == UIGestureRecognizerState.began) {
             print("begin press")
@@ -54,49 +120,15 @@ class ViewController: UIViewController {
             let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             
-            activityViewController.completionWithItemsHandler = {(type, _, _, error) in
-                if error == nil {
-                    print("share success")
-                } else {
-                    print("share failure")
-                }
-                
-            }
             // present the view controller
             self.present(activityViewController, animated: true, completion: nil)
-            
             
         }else if (pressShare.state == UIGestureRecognizerState.ended){
             print("end press")
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        locationManager.startUpdatingLocation()
-        
-        
-        let forecastThreeDayURL = router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffs", CountryOrProvinceName: "China", cityName: "Nanjing")
-        fetcher.getThreeDayForecast(url: forecastThreeDayURL) { (result) in
-            switch result {
-            case let .success(_days):
-                self.forecastDayArr = _days;
-            case let .failure(_error):
-                print("Error fetching days: \(_error.forecastErrorDescription)")
-            }
-        }
-
-        self.view.addGestureRecognizer(pressShare)
-       
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    //MARK: - status bar
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -116,9 +148,43 @@ extension ViewController: CLLocationManagerDelegate {
         geocoder.reverseGeocodeLocation(CurrentLocation) { (places: [CLPlacemark]?, error: Error?) in
             if error == nil { // normal condition
                 guard let pl = places?.first else {return}
-                self.currentCountry = pl.country
-                self.currentCity = pl.locality
-                print("current city is \(pl.locality), country is \(pl.country)")
+                self.currentCountry = pl.country // China
+                self.currentCity = pl.locality   // Nanjing
+                self.currentProvince = pl.administrativeArea // Jiangsu
+                
+                var url: URL? = nil
+                let currentLang = Locale.preferredLanguages.first
+                
+                if pl.isoCountryCode == "CN" { // In China
+                    if currentLang == "zh-Hans-CN" || currentLang == "zh-Hant-CN" {
+                        url = self.router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffc", CountryOrProvinceName: "China", cityName: self.currentCity.transformToPinYin())
+                    } else {
+                        url = self.router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffc", CountryOrProvinceName: "China", cityName: self.currentCity)
+                    }
+                } else { // Other country
+                    let countryAndProvince = "\(pl.isoCountryCode)/\(self.currentProvince)"
+                    url = self.router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffc", CountryOrProvinceName: countryAndProvince, cityName: self.currentCity)
+                }
+                
+                self.fetcher.getThreeDayForecast(url: url!, completion: { (result) in
+                    print("fetch data")
+                    switch result {
+                    case let .success(_days):
+                        self.forecastDayArr = _days
+                        let unitStr = UserDefaults.standard.object(forKey: "unit") as! String
+                        if let icon = _days.first?.forecastIcon, let low = _days.first?.forecastLowTemperature?[unitStr],
+                            let high = _days.first?.forecastHighTemperature?[unitStr]{
+                            let urlStr = "https://icons.wxug.com/i/c/k/\(icon).gif"
+                            self.temperatureLabel.text = "\(high) / \(low)"
+                            self.conditionImageview.kf.setImage(with: URL(string: urlStr))
+                        }
+    
+                    case let .failure(_error):
+                        print(_error.forecastErrorDescription ?? "error")
+                    }
+                })
+                self.cityLabel.text = pl.locality
+
             } else { // no internet condition
                 let alertVC = UIAlertController(title: "Drizzling uses the internet to show the weather.\nAre you connected?", message: nil, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
@@ -151,15 +217,4 @@ extension ViewController: CLLocationManagerDelegate {
         
         present(alertVC, animated: true, completion: nil)
     }
-    
-    
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        switch status {
-//        case .authorizedWhenInUse:
-//            manager.startUpdatingLocation()
-//        default:
-//            return
-//        }
-//    }
-    
 }

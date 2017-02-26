@@ -19,14 +19,11 @@ class LJChooseTemperatureUnitViewController: UIViewController {
         let defaults = UserDefaults.standard
 
         if sender == fahrenheitBtn {
-            defaults.set("F", forKey: "unit")
+            defaults.set("fahrenheit", forKey: "unit")
             defaults.synchronize()
-            
-            print("FFFF")
         } else if sender == celsiusBtn {
-            defaults.set("C", forKey: "unit")
+            defaults.set("celsius", forKey: "unit")
             defaults.synchronize()
-            print("CCCC")
         }
         
         self.view.window?.rootViewController = ViewController()
@@ -40,8 +37,6 @@ class LJChooseTemperatureUnitViewController: UIViewController {
         attString.setAttributes([NSFontAttributeName:fontSuper!,NSBaselineOffsetAttributeName:10,NSForegroundColorAttributeName:UIColor.white], range: range)
         return attString
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
