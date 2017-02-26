@@ -11,7 +11,7 @@ import MapKit
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
-
+import Social
 
 class ViewController: UIViewController {
 
@@ -32,10 +32,44 @@ class ViewController: UIViewController {
     
     var router = DrizzlingRouter()
     var fetcher = DrizzlingFetcher()
+
+    lazy var pressShare: UILongPressGestureRecognizer = {
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(showShareView))
+        gesture.minimumPressDuration = 1
+        return gesture
+    }()
     
     
-    
-    
+    func showShareView() {
+        if (pressShare.state == UIGestureRecognizerState.began) {
+            print("begin press")
+            
+            // text to share
+            let text = "This is a small but useful weather app."
+            let appURL = URL(string: "http://www.longjianjiang.com")
+            
+            
+            // set up activity view controller
+            let textToShare = [text,appURL!] as [Any]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            
+            activityViewController.completionWithItemsHandler = {(type, _, _, error) in
+                if error == nil {
+                    print("share success")
+                } else {
+                    print("share failure")
+                }
+                
+            }
+            // present the view controller
+            self.present(activityViewController, animated: true, completion: nil)
+            
+            
+        }else if (pressShare.state == UIGestureRecognizerState.ended){
+            print("end press")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +83,11 @@ class ViewController: UIViewController {
             case let .success(_days):
                 self.forecastDayArr = _days;
             case let .failure(_error):
-                print("Error fetching days: \(_error)")
+                print("Error fetching days: \(_error.forecastErrorDescription)")
             }
         }
 
-        
+        self.view.addGestureRecognizer(pressShare)
        
         
     }
@@ -104,6 +138,7 @@ extension ViewController: CLLocationManagerDelegate {
                     UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
                 } else {
                     // Fallback on earlier versions
+                    UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
                 }
             }
         }
