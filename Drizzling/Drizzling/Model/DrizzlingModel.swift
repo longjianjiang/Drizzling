@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import UIKit
 /**
  {
  "date": {
@@ -110,4 +111,10 @@ class ForecastError: Mappable {
     required init?(map: Map) {
         
     }
+}
+
+
+public struct Gradient {
+    let startColor: UIColor
+    let endColor: UIColor
 }

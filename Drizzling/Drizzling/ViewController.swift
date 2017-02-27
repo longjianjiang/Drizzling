@@ -27,6 +27,14 @@ class ViewController: UIViewController {
     var router = DrizzlingRouter()
     var fetcher = DrizzlingFetcher()
     
+    fileprivate let gradientLayer: CAGradientLayer = {
+        let blue = UIColor(red: 78/255.0, green: 208/255.0, blue: 255/255.0, alpha: 1.0)
+        let green = UIColor(red: 200/255.0, green: 255/255.0, blue: 192/255.0, alpha: 1.0)
+        let gradient = Gradient(startColor: blue, endColor: green)
+        return CAGradientLayer.gradientLayer(with: gradient)
+    }()
+    
+    
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self
@@ -47,17 +55,11 @@ class ViewController: UIViewController {
     lazy var cityLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 40)
         label.textColor = UIColor.white
         return label
     }()
     
-    lazy var conditionImageview: UIImageView = {
-        let imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-//        imgView.kf.setImage(with: URL(string: "https://icons.wxug.com/i/c/k/clear.gif"))
-        return imgView
-    }()
     lazy var temperatureLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -77,29 +79,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.init(colorLiteralRed: 69/255.0, green: 69/255.0, blue: 69/255.0, alpha: 1.0)
+        self.view.layer.addSublayer(gradientLayer)
+        
         self.view.addSubview(cityLabel)
-        self.view.addSubview(conditionImageview)
-        self.view.addSubview(temperatureLabel)
-        conditionImageview.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(40)
-            make.left.right.equalTo(self.view)
-            make.height.equalTo(80)
-        }
-        temperatureLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.conditionImageview.snp.bottom).offset(20)
-            make.left.right.equalTo(self.view)
-            make.height.equalTo(100)
-        }
+   
         cityLabel.snp.makeConstraints { (maker) in
             maker.bottom.equalTo(self.view).offset(-50)
             maker.left.right.equalTo(self.view)
-            maker.height.equalTo(40)
+            maker.height.equalTo(60)
         }
         
         self.view.addGestureRecognizer(pressShare)
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientLayer.frame = view.bounds
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -111,7 +107,7 @@ class ViewController: UIViewController {
             print("begin press")
             
             // text to share
-            let text = "This is a small but useful weather app."
+            let text = "This is a small but beautiful weather app."
             let appURL = URL(string: "http://www.longjianjiang.com")
             
             
@@ -166,23 +162,22 @@ extension ViewController: CLLocationManagerDelegate {
                     url = self.router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffc", CountryOrProvinceName: countryAndProvince, cityName: self.currentCity)
                 }
                 
-                self.fetcher.getThreeDayForecast(url: url!, completion: { (result) in
-                    print("fetch data")
-                    switch result {
-                    case let .success(_days):
-                        self.forecastDayArr = _days
-                        let unitStr = UserDefaults.standard.object(forKey: "unit") as! String
-                        if let icon = _days.first?.forecastIcon, let low = _days.first?.forecastLowTemperature?[unitStr],
-                            let high = _days.first?.forecastHighTemperature?[unitStr]{
-                            let urlStr = "https://icons.wxug.com/i/c/k/\(icon).gif"
-                            self.temperatureLabel.text = "\(high) / \(low)"
-                            self.conditionImageview.kf.setImage(with: URL(string: urlStr))
-                        }
-    
-                    case let .failure(_error):
-                        print(_error.forecastErrorDescription ?? "error")
-                    }
-                })
+//                self.fetcher.getThreeDayForecast(url: url!, completion: { (result) in
+//                    print("fetch data")
+//                    switch result {
+//                    case let .success(_days):
+//                        self.forecastDayArr = _days
+//                        let unitStr = UserDefaults.standard.object(forKey: "unit") as! String
+//                        if let icon = _days.first?.forecastIcon, let low = _days.first?.forecastLowTemperature?[unitStr],
+//                            let high = _days.first?.forecastHighTemperature?[unitStr]{
+//                            self.temperatureLabel.text = "\(high) / \(low)"
+//    
+//                        }
+//    
+//                    case let .failure(_error):
+//                        print(_error.forecastErrorDescription ?? "error")
+//                    }
+//                })
                 self.cityLabel.text = pl.locality
 
             } else { // no internet condition
