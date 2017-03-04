@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nN5-vg-OMM">
-                    <rect key="frame" x="58" y="208" width="259" height="50"/>
+                    <rect key="frame" x="13" y="208" width="349" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="OBe-Tc-ca2"/>
                     </constraints>
@@ -62,9 +62,9 @@
                 <constraint firstItem="AZ8-0I-OFj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="50" id="bOH-9e-6hd"/>
                 <constraint firstItem="plP-aX-4vX" firstAttribute="top" secondItem="nN5-vg-OMM" secondAttribute="bottom" constant="100" id="ePJ-Iu-mAP"/>
                 <constraint firstItem="plP-aX-4vX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="50" id="hcZ-5d-plk"/>
-                <constraint firstAttribute="trailingMargin" secondItem="nN5-vg-OMM" secondAttribute="trailing" constant="50" id="mDz-6D-x5g"/>
+                <constraint firstAttribute="trailingMargin" secondItem="nN5-vg-OMM" secondAttribute="trailing" constant="5" id="mDz-6D-x5g"/>
                 <constraint firstAttribute="trailingMargin" secondItem="plP-aX-4vX" secondAttribute="trailing" constant="50" id="mIn-zl-2J8"/>
-                <constraint firstItem="nN5-vg-OMM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="50" id="weo-rz-2rO"/>
+                <constraint firstItem="nN5-vg-OMM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="5" id="weo-rz-2rO"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="54.5"/>
         </view>

@@ -14,10 +14,14 @@ import ObjectMapper
 import Social
 import SnapKit
 import Kingfisher
+import UserNotifications
+
 
 class ViewController: UIViewController {
-
+    
     //MARK: - property
+    let center = UNUserNotificationCenter.current()
+    
     var currentCity: String! = nil
     var currentCountry: String! = nil
     var currentProvince: String! = nil
@@ -26,14 +30,6 @@ class ViewController: UIViewController {
     
     var router = DrizzlingRouter()
     var fetcher = DrizzlingFetcher()
-    
-    fileprivate let gradientLayer: CAGradientLayer = {
-        let blue = UIColor(red: 78/255.0, green: 208/255.0, blue: 255/255.0, alpha: 1.0)
-        let green = UIColor(red: 200/255.0, green: 255/255.0, blue: 192/255.0, alpha: 1.0)
-        let gradient = Gradient(startColor: blue, endColor: green)
-        return CAGradientLayer.gradientLayer(with: gradient)
-    }()
-    
     
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -55,19 +51,42 @@ class ViewController: UIViewController {
     lazy var cityLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 40)
-        label.textColor = UIColor.white
+        if DeviceType.IS_IPHONE_5 {
+            label.font = UIFont.systemFont(ofSize: 30)
+        }
+        label.textColor = UIColor.black
         return label
     }()
     
-    lazy var temperatureLabel: UILabel = {
+    lazy var temperatureConditionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 90)
-        label.numberOfLines = 0
-        label.textColor = UIColor.white
+        if DeviceType.IS_IPHONE_5 {
+            label.font = UIFont.systemFont(ofSize: 30)
+        }
+        label.textColor = UIColor.black
         return label
     }()
+    lazy var temperatureNumberLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        if DeviceType.IS_IPHONE_5 {
+            label.font = UIFont.systemFont(ofSize: 80)
+        }
+        label.numberOfLines = 0
+        label.textColor = UIColor.black
+        return label
+    }()
+    
+    lazy var shareTextview: KMPlaceholderTextView = {
+        let textview = KMPlaceholderTextView()
+        textview.placeholder = "write some thing about today's weather?"
+        if DeviceType.IS_IPHONE_5 {
+            textview.font = UIFont.systemFont(ofSize: 20)
+        }
+        return textview
+    }()
+    
     
     
     //MARK: - life cycle
@@ -79,26 +98,83 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layer.addSublayer(gradientLayer)
-        
+        self.view.backgroundColor = UIColor.white
+
+        self.view.addSubview(temperatureConditionLabel)
+        self.view.addSubview(temperatureNumberLabel)
         self.view.addSubview(cityLabel)
-   
+        self.view.addSubview(shareTextview)
+        
+        temperatureConditionLabel.snp.makeConstraints { (maker) in
+            if DeviceType.IS_IPHONE_5 {
+                maker.top.equalTo(self.view).offset(30)
+                maker.left.right.equalTo(self.view)
+                maker.height.equalTo(40)
+            }
+            maker.top.equalTo(self.view).offset(44)
+            maker.left.right.equalTo(self.view)
+            maker.height.equalTo(60)
+        }
+        temperatureNumberLabel.snp.makeConstraints { (maker) in
+            if DeviceType.IS_IPHONE_5 {
+                maker.top.equalTo(temperatureConditionLabel.snp.bottom).offset(20)
+                maker.left.right.equalTo(self.view)
+                maker.height.equalTo(100)
+            }
+
+            maker.top.equalTo(temperatureConditionLabel.snp.bottom).offset(20)
+            maker.left.right.equalTo(self.view)
+            maker.height.equalTo(100)
+        }
+        
+        shareTextview.snp.makeConstraints { (maker) in
+            if DeviceType.IS_IPHONE_5 {
+                maker.top.equalTo(temperatureNumberLabel.snp.bottom).offset(20)
+                maker.left.equalTo(self.view).offset(10)
+                maker.right.equalTo(self.view).offset(-5)
+                maker.height.equalTo(100)
+            }
+            maker.top.equalTo(temperatureNumberLabel.snp.bottom).offset(50)
+            maker.left.equalTo(self.view).offset(10)
+            maker.right.equalTo(self.view).offset(-5)
+            maker.height.equalTo(200)
+        }
         cityLabel.snp.makeConstraints { (maker) in
-            maker.bottom.equalTo(self.view).offset(-50)
+            if DeviceType.IS_IPHONE_5 {
+                maker.bottom.equalTo(self.view).offset(-20)
+                maker.left.right.equalTo(self.view)
+                maker.height.equalTo(40)
+            }
+            maker.bottom.equalTo(self.view).offset(-20)
             maker.left.right.equalTo(self.view)
             maker.height.equalTo(60)
         }
         
         self.view.addGestureRecognizer(pressShare)
+        
+        
+        
+/**
+        let content = UNMutableNotificationContent()
+        content.title = "Don't forget"
+        content.body = "Buy some milk"
+        content.sound = UNNotificationSound.default()
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 300,
+                                                        repeats: false)
+        let identifier = "UYLLocalNotification"
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: content, trigger: trigger)
+        center.add(request, withCompletionHandler: { (error) in
+            if let error = error {
+                // Something went wrong
+            }
+        })
+ */
+        
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        gradientLayer.frame = view.bounds
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     //MARK: - response method
@@ -179,7 +255,8 @@ extension ViewController: CLLocationManagerDelegate {
 //                    }
 //                })
                 self.cityLabel.text = pl.locality
-
+                self.temperatureConditionLabel.text = "Partly cloudy"
+                self.temperatureNumberLabel.text = "18"
             } else { // no internet condition
                 let alertVC = UIAlertController(title: "Drizzling uses the internet to show the weather.\nAre you connected?", message: nil, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Got it", style: .default, handler: nil)

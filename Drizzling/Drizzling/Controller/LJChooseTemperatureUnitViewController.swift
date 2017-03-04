@@ -26,6 +26,7 @@ class LJChooseTemperatureUnitViewController: UIViewController {
             defaults.synchronize()
         }
         
+        
         self.view.window?.rootViewController = ViewController()
     }
     
