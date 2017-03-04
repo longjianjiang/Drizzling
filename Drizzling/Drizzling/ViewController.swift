@@ -31,6 +31,8 @@ class ViewController: UIViewController {
     var router = DrizzlingRouter()
     var fetcher = DrizzlingFetcher()
     
+    var threeDaysForecastView = ThreeDaysForecastView()
+    
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self
@@ -48,6 +50,10 @@ class ViewController: UIViewController {
         return gesture
     }()
     
+    lazy var pullDownShowThreeDays: UIPanGestureRecognizer = {
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(showThreeDaysCondition(gesture:)))
+        return gesture
+    }()
     //MARK: - lazy property
     lazy var cityLabel: UILabel = {
         let label = UILabel()
@@ -112,6 +118,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
 
+        self.view.addSubview(threeDaysForecastView)
+        threeDaysForecastView.backgroundColor = UIColor.red
+        threeDaysForecastView.snp.makeConstraints { (maker) in
+            maker.left.right.equalTo(self.view)
+            maker.bottom.equalTo(self.view.snp.top)
+            maker.height.equalTo(150)
+        }
         self.view.addSubview(temperatureConditionLabel)
         self.view.addSubview(temperatureNumberLabel)
         self.view.addSubview(cityLabel)
@@ -169,7 +182,7 @@ class ViewController: UIViewController {
         }
         
         self.view.addGestureRecognizer(pressShare)
-        
+        self.view.addGestureRecognizer(pullDownShowThreeDays)
         
         
 /**
@@ -224,6 +237,55 @@ class ViewController: UIViewController {
         }
     }
     
+    func recognizePanDirection(translation: CGPoint) {
+        let absX = fabs(translation.x);
+        let absY = fabs(translation.y);
+        
+        if (absX > absY ) {
+            
+            if (translation.x<0) {
+                print("left")
+                //向左滑动
+            }else{
+                print("right")
+                //向右滑动
+            }
+            
+        } else if (absY > absX) {
+            if (translation.y<0) {
+                print("up")
+                //向上滑动
+            }else{  
+                print("dwon")
+                //向下滑动  
+                UIView.animate(withDuration: 6, animations: {
+                    self.threeDaysForecastView.snp.updateConstraints({ (maker) in
+                        maker.bottom.equalTo(self.view.snp.top).offset(150)
+                    })
+                    self.temperatureNumberLabel.isHidden = true
+                    self.temperatureConditionLabel.isHidden = true
+                })
+
+            }  
+        }
+    }
+    
+    func showThreeDaysCondition(gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+            recognizePanDirection(translation: gesture.translation(in: self.view))
+        }
+        if gesture.state == .ended {
+            UIView.animate(withDuration: 15, animations: {
+                self.threeDaysForecastView.snp.updateConstraints({ (maker) in
+                    maker.bottom.equalTo(self.view.snp.top)
+                })
+                self.temperatureNumberLabel.isHidden = false
+                self.temperatureConditionLabel.isHidden = false
+            })
+        }
+    }
+    
+    
     //MARK: - status bar
     override var prefersStatusBarHidden: Bool {
         return true
@@ -242,9 +304,10 @@ extension ViewController: CLLocationManagerDelegate {
         }
         let currentLocation = locations.last
         var currentConditionURL: URL? = nil
-        
+        var threedaysForecastURL: URL? = nil
         if let latitudeStr = currentLocation?.coordinate.latitude, let longitudeStr = currentLocation?.coordinate.longitude {
             currentConditionURL = self.router.getCurrentTemperatureURL(latitude: "\(latitudeStr)", longitude: "\(longitudeStr)")
+            threedaysForecastURL = self.router.getThreeDayForecastURL(latitude: "\(latitudeStr)", longitude: "\(longitudeStr)")
         }
         self.fetcher.getCurrentTemperature(url: currentConditionURL!) { (result) in
             switch result {
@@ -253,9 +316,9 @@ extension ViewController: CLLocationManagerDelegate {
                     self.temperatureConditionLabel.text = _current.weather
                     let unitStr = UserDefaults.standard.object(forKey: "unit") as! String
                     if unitStr == "celsius" {
-                        self.temperatureNumberLabel.text = _current.feelslike_c
+                        self.temperatureNumberLabel.text = _current.feelslike_c! + "°"
                     } else {
-                        self.temperatureNumberLabel.text = _current.feelslike_f
+                        self.temperatureNumberLabel.text = _current.feelslike_f! + "°"
                     }
                 }
 
@@ -264,6 +327,16 @@ extension ViewController: CLLocationManagerDelegate {
             }
         }
         
+        self.fetcher.getThreeDayForecast(url: threedaysForecastURL!) { (result) in
+            switch result {
+            case let .success(_days):
+                self.forecastDayArr = _days
+                self.threeDaysForecastView.forecastDays = self.forecastDayArr
+
+            case let .failure(_error):
+                print(_error.forecastErrorDescription ?? "error")
+            }
+        }
         geocoder.reverseGeocodeLocation(CurrentLocation) { (places: [CLPlacemark]?, error: Error?) in
             if error == nil { // normal condition
                 

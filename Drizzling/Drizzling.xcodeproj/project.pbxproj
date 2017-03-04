@@ -26,6 +26,7 @@
 		FB11986C1E62EEB500C95BF7 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */; };
 		FB11986D1E62EEB500C95BF7 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB1198901E6A8C4400C95BF7 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */; };
+		FB1322AB1E6AE2D40023B30A /* ThreeDaysForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1322AA1E6AE2D40023B30A /* ThreeDaysForecastView.swift */; };
 		FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C3A1E49FABC00A11521 /* AppDelegate.swift */; };
 		FB2C1C3D1E49FABC00A11521 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C3C1E49FABC00A11521 /* ViewController.swift */; };
 		FB2C1C401E49FABC00A11521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2C1C3E1E49FABC00A11521 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		FB1198681E62C43500C95BF7 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
 		FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
+		FB1322AA1E6AE2D40023B30A /* ThreeDaysForecastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDaysForecastView.swift; sourceTree = "<group>"; };
 		FB2C1C371E49FABC00A11521 /* Drizzling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drizzling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2C1C3A1E49FABC00A11521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2C1C3C1E49FABC00A11521 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */,
+				FB1322AA1E6AE2D40023B30A /* ThreeDaysForecastView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				117C022F1E5FEBD600AB4835 /* DrizzlingRouter.swift in Sources */,
 				FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */,
 				FB1198691E62C43600C95BF7 /* MyUtils.swift in Sources */,
+				FB1322AB1E6AE2D40023B30A /* ThreeDaysForecastView.swift in Sources */,
 				FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
