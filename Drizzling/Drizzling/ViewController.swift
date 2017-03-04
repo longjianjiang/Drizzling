@@ -53,6 +53,8 @@ class ViewController: UIViewController {
         label.textAlignment = .center
         if DeviceType.IS_IPHONE_5 {
             label.font = UIFont.systemFont(ofSize: 30)
+        } else  {
+            label.font = UIFont.systemFont(ofSize: 40)
         }
         label.textColor = UIColor.black
         return label
@@ -63,7 +65,10 @@ class ViewController: UIViewController {
         label.textAlignment = .center
         if DeviceType.IS_IPHONE_5 {
             label.font = UIFont.systemFont(ofSize: 30)
+        }else  {
+            label.font = UIFont.systemFont(ofSize: 40)
         }
+
         label.textColor = UIColor.black
         return label
     }()
@@ -72,7 +77,10 @@ class ViewController: UIViewController {
         label.textAlignment = .center
         if DeviceType.IS_IPHONE_5 {
             label.font = UIFont.systemFont(ofSize: 80)
+        } else  {
+            label.font = UIFont.systemFont(ofSize: 100)
         }
+
         label.numberOfLines = 0
         label.textColor = UIColor.black
         return label
@@ -83,7 +91,10 @@ class ViewController: UIViewController {
         textview.placeholder = "write some thing about today's weather?"
         if DeviceType.IS_IPHONE_5 {
             textview.font = UIFont.systemFont(ofSize: 20)
+        } else  {
+            textview.font = UIFont.systemFont(ofSize: 25)
         }
+
         return textview
     }()
     
@@ -130,14 +141,19 @@ class ViewController: UIViewController {
         shareTextview.snp.makeConstraints { (maker) in
             if DeviceType.IS_IPHONE_5 {
                 maker.top.equalTo(temperatureNumberLabel.snp.bottom).offset(20)
-                maker.left.equalTo(self.view).offset(10)
-                maker.right.equalTo(self.view).offset(-5)
                 maker.height.equalTo(100)
+            } else {
+                if DeviceType.IS_IPHONE_6 {
+                    maker.top.equalTo(temperatureNumberLabel.snp.bottom).offset(30)
+                    maker.height.equalTo(150)
+                } else {
+                    maker.top.equalTo(temperatureNumberLabel.snp.bottom).offset(40)
+                    maker.height.equalTo(200)
+                }
             }
-            maker.top.equalTo(temperatureNumberLabel.snp.bottom).offset(50)
+           
             maker.left.equalTo(self.view).offset(10)
             maker.right.equalTo(self.view).offset(-5)
-            maker.height.equalTo(200)
         }
         cityLabel.snp.makeConstraints { (maker) in
             if DeviceType.IS_IPHONE_5 {
@@ -145,6 +161,7 @@ class ViewController: UIViewController {
                 maker.left.right.equalTo(self.view)
                 maker.height.equalTo(40)
             }
+
             maker.bottom.equalTo(self.view).offset(-20)
             maker.left.right.equalTo(self.view)
             maker.height.equalTo(60)
