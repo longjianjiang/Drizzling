@@ -12,6 +12,7 @@ struct DrizzlingRouter {
     // MARK: - URL Components
     
     var urlComponents = URLComponents()
+    let APIKey = "38e25298c490dffc"
     
     init() {
         urlComponents.scheme = "https"
@@ -19,8 +20,22 @@ struct DrizzlingRouter {
     }
     
     
-    mutating func getThreeDayForecastURLWithComponents(APIKey: String, CountryOrProvinceName: String, cityName: String) -> URL {
+    mutating func getThreeDayForecastURLWithComponents(CountryOrProvinceName: String, cityName: String) -> URL {
         urlComponents.path = "/api/\(APIKey)/forecast/q/\(CountryOrProvinceName)/\(cityName).json"
+        
+        return urlComponents.url!
+    }
+    
+    // use latitude and longitude to get current temperature url
+    mutating func getCurrentTemperatureURL(latitude: String, longitude: String) -> URL {
+        urlComponents.path = "/api/\(APIKey)/conditions/q/\(latitude),\(longitude).json"
+        
+        return urlComponents.url!
+    }
+    
+    // use latitude and longitude to get three day's forecast url
+    mutating func getThreeDayForecastURL(latitude: String, longitude: String) -> URL {
+        urlComponents.path = "/api/\(APIKey)/forecast/q/\(latitude),\(longitude).json"
         
         return urlComponents.url!
     }

@@ -114,10 +114,30 @@ class ForecastError: Mappable {
 }
 
 
+class CurrentCondition: Mappable {
+    var feelslike_c: String?
+    var feelslike_f: String?
+    var weather: String?
+    
+    
+    func mapping(map: Map) {
+        feelslike_c      <- map["feelslike_c"]
+        feelslike_f      <- map["feelslike_f"]
+        weather     <- map["weather"]
+    }
+    
+    
+    required init?(map: Map) {
+        
+    }
+}
+//MARK: - Layer
 public struct Gradient {
     let startColor: UIColor
     let endColor: UIColor
 }
+
+//MARK: - Screen related
 struct ScreenSize
 {
     static let SCREEN_WIDTH = UIScreen.main.bounds.size.width

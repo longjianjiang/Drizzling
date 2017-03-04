@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         return gesture
     }()
     
+    //MARK: - lazy property
     lazy var cityLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -200,8 +201,14 @@ class ViewController: UIViewController {
             print("begin press")
             
             // text to share
-            let text = "This is a small but beautiful weather app."
-            let appURL = URL(string: "http://www.longjianjiang.com")
+            let text: String!
+            if shareTextview.text.lengthOfBytes(using: .utf8) > 0 {
+                text = shareTextview.text
+            } else {
+                text = "This is a simple weather app but can allow you write something to share with others."
+            }
+            
+            let appURL = URL(string: "http://www.longjianjiang.com/projects/")
             
             
             // set up activity view controller
@@ -227,53 +234,45 @@ class ViewController: UIViewController {
 // MARK: - CLLocationManagerDelegate
 extension ViewController: CLLocationManagerDelegate {
     // when the location is enabled and get the location info then will invoked.
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
-        
         guard let CurrentLocation = locations.last else {
             return
+        }
+        let currentLocation = locations.last
+        var currentConditionURL: URL? = nil
+        
+        if let latitudeStr = currentLocation?.coordinate.latitude, let longitudeStr = currentLocation?.coordinate.longitude {
+            currentConditionURL = self.router.getCurrentTemperatureURL(latitude: "\(latitudeStr)", longitude: "\(longitudeStr)")
+        }
+        self.fetcher.getCurrentTemperature(url: currentConditionURL!) { (result) in
+            switch result {
+            case let .success(_current):
+                DispatchQueue.main.async {
+                    self.temperatureConditionLabel.text = _current.weather
+                    let unitStr = UserDefaults.standard.object(forKey: "unit") as! String
+                    if unitStr == "celsius" {
+                        self.temperatureNumberLabel.text = _current.feelslike_c
+                    } else {
+                        self.temperatureNumberLabel.text = _current.feelslike_f
+                    }
+                }
+
+            case let .failure(_error):
+                print(_error.forecastErrorDescription ?? "error")
+            }
         }
         
         geocoder.reverseGeocodeLocation(CurrentLocation) { (places: [CLPlacemark]?, error: Error?) in
             if error == nil { // normal condition
+                
                 guard let pl = places?.first else {return}
                 self.currentCountry = pl.country // China
                 self.currentCity = pl.locality   // Nanjing
                 self.currentProvince = pl.administrativeArea // Jiangsu
+                self.cityLabel.text = self.currentCity
                 
-                var url: URL? = nil
-                let currentLang = Locale.preferredLanguages.first
-                
-                if pl.isoCountryCode == "CN" { // In China
-                    if currentLang == "zh-Hans-CN" || currentLang == "zh-Hant-CN" {
-                        url = self.router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffc", CountryOrProvinceName: "China", cityName: self.currentCity.transformToPinYin())
-                    } else {
-                        url = self.router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffc", CountryOrProvinceName: "China", cityName: self.currentCity)
-                    }
-                } else { // Other country
-                    let countryAndProvince = "\(pl.isoCountryCode)/\(self.currentProvince)"
-                    url = self.router.getThreeDayForecastURLWithComponents(APIKey: "38e25298c490dffc", CountryOrProvinceName: countryAndProvince, cityName: self.currentCity)
-                }
-                
-//                self.fetcher.getThreeDayForecast(url: url!, completion: { (result) in
-//                    print("fetch data")
-//                    switch result {
-//                    case let .success(_days):
-//                        self.forecastDayArr = _days
-//                        let unitStr = UserDefaults.standard.object(forKey: "unit") as! String
-//                        if let icon = _days.first?.forecastIcon, let low = _days.first?.forecastLowTemperature?[unitStr],
-//                            let high = _days.first?.forecastHighTemperature?[unitStr]{
-//                            self.temperatureLabel.text = "\(high) / \(low)"
-//    
-//                        }
-//    
-//                    case let .failure(_error):
-//                        print(_error.forecastErrorDescription ?? "error")
-//                    }
-//                })
-                self.cityLabel.text = pl.locality
-                self.temperatureConditionLabel.text = "Partly cloudy"
-                self.temperatureNumberLabel.text = "18"
             } else { // no internet condition
                 let alertVC = UIAlertController(title: "Drizzling uses the internet to show the weather.\nAre you connected?", message: nil, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
@@ -281,6 +280,8 @@ extension ViewController: CLLocationManagerDelegate {
                 self.present(alertVC, animated: true, completion: nil)
             }
         }
+        
+        
     }
     
     // when the location service not enabled will invoked.
