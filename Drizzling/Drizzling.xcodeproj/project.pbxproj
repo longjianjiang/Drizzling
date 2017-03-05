@@ -27,6 +27,7 @@
 		FB11986D1E62EEB500C95BF7 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB1198901E6A8C4400C95BF7 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */; };
 		FB1322AB1E6AE2D40023B30A /* ThreeDaysForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1322AA1E6AE2D40023B30A /* ThreeDaysForecastView.swift */; };
+		FB1FCEE01E6BC1C000FE966B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1FCEDF1E6BC1C000FE966B /* Reachability.swift */; };
 		FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C3A1E49FABC00A11521 /* AppDelegate.swift */; };
 		FB2C1C3D1E49FABC00A11521 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C3C1E49FABC00A11521 /* ViewController.swift */; };
 		FB2C1C401E49FABC00A11521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2C1C3E1E49FABC00A11521 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
 		FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		FB1322AA1E6AE2D40023B30A /* ThreeDaysForecastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDaysForecastView.swift; sourceTree = "<group>"; };
+		FB1FCEDF1E6BC1C000FE966B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		FB2C1C371E49FABC00A11521 /* Drizzling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drizzling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2C1C3A1E49FABC00A11521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2C1C3C1E49FABC00A11521 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		FB1198671E62C36400C95BF7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				FB1FCEDF1E6BC1C000FE966B /* Reachability.swift */,
 				FB1198681E62C43500C95BF7 /* MyUtils.swift */,
 			);
 			path = Extension;
@@ -224,7 +227,7 @@
 				TargetAttributes = {
 					FB2C1C361E49FABC00A11521 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 27H2H46GDS;
+						DevelopmentTeam = L8723R7GLJ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -274,6 +277,7 @@
 				FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */,
 				FB1198691E62C43600C95BF7 /* MyUtils.swift in Sources */,
 				FB1322AB1E6AE2D40023B30A /* ThreeDaysForecastView.swift in Sources */,
+				FB1FCEE01E6BC1C000FE966B /* Reachability.swift in Sources */,
 				FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +401,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 27H2H46GDS;
+				DEVELOPMENT_TEAM = L8723R7GLJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Drizzling/Vendor",
@@ -405,7 +409,7 @@
 				INFOPLIST_FILE = Drizzling/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.longjianjiang.SimpleWeather-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -415,7 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 27H2H46GDS;
+				DEVELOPMENT_TEAM = L8723R7GLJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Drizzling/Vendor",
@@ -423,7 +427,7 @@
 				INFOPLIST_FILE = Drizzling/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.longjianjiang.SimpleWeather-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

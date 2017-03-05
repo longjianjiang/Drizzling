@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let center = UNUserNotificationCenter.current()
+    let reachability = Reachability()!
+    
     
     var locationManager = CLLocationManager.init()
 
@@ -42,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = LJChooseTemperatureUnitViewController()
         }
     
+        // monitor the network condition
+        networkMonitor()
+        
         return true
     }
 
@@ -70,6 +75,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func networkMonitor() {
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
 
+        
+        reachability.whenReachable = { reachability in
+            
+            DispatchQueue.main.async {
+                if reachability.isReachableViaWiFi {
+                    print("Reachable via WiFi")
+                } else {
+                    print("Reachable via Cellular")
+                }
+                
+                self.locationManager.startUpdatingLocation()
+
+            }
+        }
+        
+        reachability.whenUnreachable = { reachability in
+            print("Not reachable")
+
+        }
+        
+    }
+    
+    deinit {
+        reachability.stopNotifier()
+    }
 }
 
