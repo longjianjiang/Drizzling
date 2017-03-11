@@ -205,6 +205,7 @@
 				FB2C1C341E49FABC00A11521 /* Frameworks */,
 				FB2C1C351E49FABC00A11521 /* Resources */,
 				11FA075C1E5BDB8C00A54697 /* Embed Frameworks */,
+				FB1FCEE11E6BD78000FE966B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -263,6 +264,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FB1FCEE11E6BD78000FE966B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB2C1C331E49FABC00A11521 /* Sources */ = {
@@ -404,7 +428,7 @@
 				DEVELOPMENT_TEAM = L8723R7GLJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Drizzling/Vendor",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Drizzling/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -412,6 +436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -422,7 +447,7 @@
 				DEVELOPMENT_TEAM = L8723R7GLJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Drizzling/Vendor",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Drizzling/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -430,6 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

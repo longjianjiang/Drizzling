@@ -19,11 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let reachability = Reachability()!
     
     
-    var locationManager = CLLocationManager.init()
+//    var locationManager = CLLocationManager.init()
+    
+    lazy var locationManager: CLLocationManager = {
+        let manager = CLLocationManager()
+        manager.delegate = self
+        manager.requestWhenInUseAuthorization()
+        return manager
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // ask to notification
-        let options: UNAuthorizationOptions = [.alert, .sound]
+        center.delegate = self
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         center.requestAuthorization(options: options) {
             (granted, error) in
             if !granted {
@@ -65,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
         }
+        
+        print("enter foreground")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -110,3 +120,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension AppDelegate : CLLocationManagerDelegate {
+    
+}
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+}

@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     
     var threeDaysForecastView = ThreeDaysForecastView()
     
+    var timer = Timer()
+    
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self
@@ -114,10 +116,38 @@ class ViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
+    // update the weather condition one hour a time.
+    func updateCondition() {
+        timer = Timer.scheduledTimer(withTimeInterval: 60*60, repeats: true, block: { (_) in
+            self.locationManager.startUpdatingLocation()
+        })
+    }
+    
+    func getTheTomorrowForecast() -> String{
+        var msg: String! = "open the app to know tomorrow weather forecast 😄"
+        let unitStr = UserDefaults.standard.object(forKey: "unit") as! String
+        if forecastDayArr.count > 0 {
+            let forecast = forecastDayArr[1]
+            
+            if  let low = forecast.forecastLowTemperature?[unitStr],
+                let high = forecast.forecastHighTemperature?[unitStr]{
+                if forecast.forecastCondition == "Rain" {
+                    msg = "remember to bring a umbrella, temperature is \(high) - \(low)"
+                } else {
+                    msg = "\(forecast.forecastCondition), temperature is \(high) - \(low)"
+                }
+            }
+        }
+        return msg
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        updateCondition()
+        setUpView()
+    }
 
+    func setUpView() {
         self.view.addSubview(threeDaysForecastView)
         threeDaysForecastView.backgroundColor = UIColor.red
         threeDaysForecastView.snp.makeConstraints { (maker) in
@@ -146,7 +176,7 @@ class ViewController: UIViewController {
                 maker.left.right.equalTo(self.view)
                 maker.height.equalTo(100)
             }
-
+            
             maker.top.equalTo(temperatureConditionLabel.snp.bottom).offset(20)
             maker.left.right.equalTo(self.view)
             maker.height.equalTo(100)
@@ -165,7 +195,7 @@ class ViewController: UIViewController {
                     maker.height.equalTo(200)
                 }
             }
-           
+            
             maker.left.equalTo(self.view).offset(10)
             maker.right.equalTo(self.view).offset(-5)
         }
@@ -175,7 +205,7 @@ class ViewController: UIViewController {
                 maker.left.right.equalTo(self.view)
                 maker.height.equalTo(40)
             }
-
+            
             maker.bottom.equalTo(self.view).offset(-20)
             maker.left.right.equalTo(self.view)
             maker.height.equalTo(60)
@@ -183,27 +213,12 @@ class ViewController: UIViewController {
         
         self.view.addGestureRecognizer(pressShare)
         self.view.addGestureRecognizer(pullDownShowThreeDays)
-        
-        
-/**
-        let content = UNMutableNotificationContent()
-        content.title = "Don't forget"
-        content.body = "Buy some milk"
-        content.sound = UNNotificationSound.default()
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 300,
-                                                        repeats: false)
-        let identifier = "UYLLocalNotification"
-        let request = UNNotificationRequest(identifier: identifier,
-                                            content: content, trigger: trigger)
-        center.add(request, withCompletionHandler: { (error) in
-            if let error = error {
-                // Something went wrong
-            }
-        })
- */
-        
-    }
 
+    }
+    
+    deinit {
+        timer.invalidate()
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -298,6 +313,8 @@ extension ViewController: CLLocationManagerDelegate {
     // when the location is enabled and get the location info then will invoked.
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        print("use location")
         manager.stopUpdatingLocation()
         guard let CurrentLocation = locations.last else {
             return
@@ -327,12 +344,32 @@ extension ViewController: CLLocationManagerDelegate {
             }
         }
         
+        
         self.fetcher.getThreeDayForecast(url: threedaysForecastURL!) { (result) in
             switch result {
             case let .success(_days):
                 self.forecastDayArr = _days
                 self.threeDaysForecastView.forecastDays = self.forecastDayArr
 
+                // send local nitification to users everyday!
+                let content = UNMutableNotificationContent()
+                content.title = "Tomorrow Weather"
+                content.body = self.getTheTomorrowForecast()
+                content.sound = UNNotificationSound.default()
+                content.badge = 1
+                var dateComponents = DateComponents()
+                dateComponents.hour = 20
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                let identifier = "com.longjianjiang.notification"
+                let request = UNNotificationRequest(identifier: identifier,
+                                                    content: content,
+                                                    trigger: trigger)
+                self.center.add(request, withCompletionHandler: { (error) in
+                    if let error = error {
+                        // Something went wrong
+                    }
+                })
+                
             case let .failure(_error):
                 print(_error.forecastErrorDescription ?? "error")
             }
@@ -371,8 +408,7 @@ extension ViewController: CLLocationManagerDelegate {
                 }
             }
         }
-        
-        
+  
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         
         alertVC.addAction(openLocationAction)
