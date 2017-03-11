@@ -34,6 +34,10 @@ class ViewController: UIViewController {
     var threeDaysForecastView = ThreeDaysForecastView()
     
     var timer = Timer()
+
+    let introduceView = IntroduceView()
+    
+    
     
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -113,6 +117,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         locationManager.startUpdatingLocation()
     }
     
@@ -142,9 +147,23 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.view.backgroundColor = UIColor.white
         updateCondition()
         setUpView()
+        
+        // add the first introduction for users.
+        let isFirstTime = UserDefaults.standard.object(forKey: "FirstToUse")
+        if isFirstTime == nil { // mean first time to use this app.
+            self.view.addSubview(introduceView)
+            introduceView.snp.makeConstraints { (maker) in
+                maker.edges.equalTo(self.view)
+            }
+            UserDefaults.standard.set(false, forKey: "FirstToUse")
+            UserDefaults.standard.synchronize()
+        }
+    
+        
     }
 
     func setUpView() {

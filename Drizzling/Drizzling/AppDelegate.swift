@@ -19,14 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let reachability = Reachability()!
     
     
-//    var locationManager = CLLocationManager.init()
-    
-    lazy var locationManager: CLLocationManager = {
-        let manager = CLLocationManager()
-        manager.delegate = self
-        manager.requestWhenInUseAuthorization()
-        return manager
-    }()
+    var locationManager = CLLocationManager.init()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // ask to notification
@@ -55,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // monitor the network condition
         networkMonitor()
         
+        
+        
         return true
     }
 
@@ -74,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             locationManager.requestWhenInUseAuthorization()
         }
         
-        print("enter foreground")
+       UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -120,9 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-extension AppDelegate : CLLocationManagerDelegate {
-    
-}
 extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
