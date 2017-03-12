@@ -135,11 +135,12 @@ class ViewController: UIViewController {
             let forecast = forecastDayArr[1]
             
             if  let low = forecast.forecastLowTemperature?[unitStr],
-                let high = forecast.forecastHighTemperature?[unitStr]{
-                if forecast.forecastCondition == "Rain" {
+                let high = forecast.forecastHighTemperature?[unitStr],
+                let condition = forecast.forecastCondition{
+                if condition.contains("Rain") {
                     msg = "remember to bring a umbrella, temperature is \(high) - \(low)"
                 } else {
-                    msg = "\(forecast.forecastCondition), temperature is \(high) - \(low)"
+                    msg = "\(condition), temperature is \(high) - \(low)"
                 }
             }
         }
@@ -377,7 +378,8 @@ extension ViewController: CLLocationManagerDelegate {
                 content.sound = UNNotificationSound.default()
                 content.badge = 1
                 var dateComponents = DateComponents()
-                dateComponents.hour = 20
+                dateComponents.hour = 21
+                dateComponents.minute = 11
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
                 let identifier = "com.longjianjiang.notification"
                 let request = UNNotificationRequest(identifier: identifier,
