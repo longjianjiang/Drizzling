@@ -20,8 +20,6 @@ import UserNotifications
 class ViewController: UIViewController {
     
     //MARK: - property
-    let center = UNUserNotificationCenter.current()
-    
     var currentCity: String! = nil
     var currentCountry: String! = nil
     var currentProvince: String! = nil
@@ -123,11 +121,12 @@ class ViewController: UIViewController {
     
     // update the weather condition one hour a time.
     func updateCondition() {
-        timer = Timer.scheduledTimer(withTimeInterval: 60*60, repeats: true, block: { (_) in
-            self.locationManager.startUpdatingLocation()
-        })
+        timer = Timer.scheduledTimer(timeInterval: 60*60, target: self, selector: #selector(updateHourCondition), userInfo: nil, repeats: true)
     }
     
+    func updateHourCondition() {
+        self.locationManager.startUpdatingLocation()
+    }
     func getTheTomorrowForecast() -> String{
         var msg: String! = "open the app to know tomorrow weather forecast 😄"
         let unitStr = UserDefaults.standard.object(forKey: "unit") as! String
@@ -372,24 +371,28 @@ extension ViewController: CLLocationManagerDelegate {
                 self.threeDaysForecastView.forecastDays = self.forecastDayArr
 
                 // send local nitification to users everyday!
-                let content = UNMutableNotificationContent()
-                content.title = "Tomorrow Weather"
-                content.body = self.getTheTomorrowForecast()
-                content.sound = UNNotificationSound.default()
-                content.badge = 1
-                var dateComponents = DateComponents()
-                dateComponents.hour = 21
-                dateComponents.minute = 11
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                let identifier = "com.longjianjiang.notification"
-                let request = UNNotificationRequest(identifier: identifier,
-                                                    content: content,
-                                                    trigger: trigger)
-                self.center.add(request, withCompletionHandler: { (error) in
-                    if let error = error {
-                        // Something went wrong
-                    }
-                })
+                if #available(iOS 10.0, *) {
+                    let center = UNUserNotificationCenter.current()
+                    let content = UNMutableNotificationContent()
+                    content.title = "Tomorrow Weather"
+                    content.body = self.getTheTomorrowForecast()
+                    content.sound = UNNotificationSound.default()
+                    content.badge = 1
+                    var dateComponents = DateComponents()
+                    dateComponents.hour = 21
+                    dateComponents.minute = 11
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                    let identifier = "com.longjianjiang.notification"
+                    let request = UNNotificationRequest(identifier: identifier,
+                                                        content: content,
+                                                        trigger: trigger)
+                    center.add(request, withCompletionHandler: { (error) in
+                        if let error = error {
+                            // Something went wrong
+                        }
+                    })
+
+                }
                 
             case let .failure(_error):
                 print(_error.forecastErrorDescription ?? "error")

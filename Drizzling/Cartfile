@@ -1,6 +1,5 @@
 github "Alamofire/Alamofire"
 github "SnapKit/SnapKit"
-github "ReactiveX/RxSwift"
 github "SwiftyJSON/SwiftyJSON"
 github "Hearst-DD/ObjectMapper" ~> 2.2
 github "onevcat/Kingfisher" ~> 3.0
