@@ -163,9 +163,11 @@ class ViewController: UIViewController {
             UserDefaults.standard.synchronize()
         }
     
-        
+        // add observer to response change theme notification
+        NotificationCenter.default.addObserver(self, selector: #selector(changeTheme), name: NSNotification.Name(rawValue: "ChangeThemeNotification"), object: nil)
     }
 
+   
     func setUpView() {
         self.view.addSubview(threeDaysForecastView)
         threeDaysForecastView.backgroundColor = UIColor.red
@@ -237,12 +239,22 @@ class ViewController: UIViewController {
     
     deinit {
         timer.invalidate()
+        NotificationCenter.default.removeObserver(self)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 
     //MARK: - response method
+    func changeTheme() {
+        self.view.backgroundColor = UIColor.black
+        self.shareTextview.backgroundColor = UIColor.black
+        self.cityLabel.textColor = UIColor.white
+        self.temperatureNumberLabel.textColor = UIColor.white
+        self.temperatureConditionLabel.textColor = UIColor.white
+        self.shareTextview.textColor = UIColor.white
+        self.shareTextview.placeholderColor = UIColor.gray
+    }
     func showShareView() {
         if (pressShare.state == UIGestureRecognizerState.began) {
             print("begin press")
@@ -329,8 +341,8 @@ class ViewController: UIViewController {
 
 // MARK: - CLLocationManagerDelegate
 extension ViewController: CLLocationManagerDelegate {
-    // when the location is enabled and get the location info then will invoked.
     
+    // when the location is enabled and get the location info then will invoked.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("use location")

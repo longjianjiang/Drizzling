@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationManager = CLLocationManager.init()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        self.isChangeTheme() // at there notification method won't be invoked
         if #available(iOS 10.0, *) {
             // ask to notification
             let center = UNUserNotificationCenter.current()
@@ -51,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         networkMonitor()
         
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
         return true
     }
@@ -66,12 +68,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
         }
         
-       UIApplication.shared.applicationIconBadgeNumber = 0
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        self.isChangeTheme()
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -114,6 +118,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     deinit {
         reachability.stopNotifier()
+    }
+    
+    //MARK: tool method
+    func isChangeTheme() {
+        // when at night, send a notification to change the app theme
+        if self.isBetweenFromHour(5, toHour: 19) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeThemeNotification"), object: nil)
+        }
+
+    }
+    func getCustomDateWithHour(_ hour: NSInteger) -> Date {
+        let currentDate = Date()
+        let currentCalendar = Calendar.current
+        
+        let currentComponent = currentCalendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currentDate)
+        
+        var resultComponent = DateComponents()
+        resultComponent.setValue(currentComponent.year, for: .year)
+        resultComponent.setValue(currentComponent.month, for: .month)
+        resultComponent.setValue(currentComponent.day, for: .day)
+        resultComponent.setValue(hour, for: .hour)
+        
+        return currentCalendar.date(from: resultComponent)!
+    }
+
+    func isBetweenFromHour(_ fromHour: NSInteger, toHour: NSInteger) -> Bool {
+        let date1 = self.getCustomDateWithHour(fromHour)
+        let date2 = self.getCustomDateWithHour(toHour)
+        let currentDate = Date()
+        
+        if !(currentDate.compare(date1) == ComparisonResult.orderedDescending && currentDate.compare(date2) == ComparisonResult.orderedAscending){
+            return true
+        } else {
+            return false
+        }
+        
+        
+        
     }
 }
 
