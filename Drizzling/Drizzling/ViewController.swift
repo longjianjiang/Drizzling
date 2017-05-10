@@ -110,15 +110,6 @@ class ViewController: UIViewController {
     }()
     
     
-    
-    //MARK: - life cycle
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        locationManager.startUpdatingLocation()
-    }
-    
     // update the weather condition one hour a time.
     func updateCondition() {
         timer = Timer.scheduledTimer(timeInterval: 60*60, target: self, selector: #selector(updateHourCondition), userInfo: nil, repeats: true)
@@ -145,6 +136,17 @@ class ViewController: UIViewController {
         }
         return msg
     }
+
+    //MARK: - life cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        locationManager.startUpdatingLocation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -165,6 +167,11 @@ class ViewController: UIViewController {
     
         // add observer to response change theme notification
         NotificationCenter.default.addObserver(self, selector: #selector(changeTheme), name: NSNotification.Name(rawValue: "ChangeThemeNotification"), object: nil)
+        
+        
+        // add observer to share image when user did screenshot
+        NotificationCenter.default.addObserver(self, selector: #selector(shareScreenshot), name: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil)
+        
     }
 
    
@@ -246,6 +253,13 @@ class ViewController: UIViewController {
     }
 
     //MARK: - response method
+    func shareScreenshot() {
+        let screenshotImage = self.screenshot()
+        
+        let activityItem: [AnyObject] = [screenshotImage as AnyObject]
+        let activityViewController = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     func changeTheme() {
         self.view.backgroundColor = UIColor.black
         self.shareTextview.backgroundColor = UIColor.black
@@ -272,7 +286,18 @@ class ViewController: UIViewController {
             
             // set up activity view controller
             let textToShare = [text,appURL!] as [Any]
-            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            // add the screenshot activity
+            let screenshotActivity = ScreenshotShareActivity()
+            screenshotActivity.completionHandler = {() in
+                let screenshotImage = self.screenshot()
+                
+                let activityItem: [AnyObject] = [screenshotImage as AnyObject]
+                let activityViewController = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+            
+            
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: [screenshotActivity])
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             
             // present the view controller
@@ -281,6 +306,37 @@ class ViewController: UIViewController {
         }else if (pressShare.state == UIGestureRecognizerState.ended){
             print("end press")
         }
+    }
+    
+    
+    func screenshot() -> UIImage {
+        let imageSize = UIScreen.main.bounds.size as CGSize;
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        for obj : AnyObject in UIApplication.shared.windows {
+            if let window = obj as? UIWindow {
+                if window.responds(to: #selector(getter: UIWindow.screen)) || window.screen == UIScreen.main {
+                    // so we must first apply the layer's geometry to the graphics context
+                    context!.saveGState();
+                    // Center the context around the window's anchor point
+                    context!.translateBy(x: window.center.x, y: window.center
+                        .y);
+                    // Apply the window's transform about the anchor point
+                    context!.concatenate(window.transform);
+                    // Offset by the portion of the bounds left of and above the anchor point
+                    context!.translateBy(x: -window.bounds.size.width * window.layer.anchorPoint.x,
+                                         y: -window.bounds.size.height * window.layer.anchorPoint.y);
+                    
+                    // Render the layer hierarchy to the current context
+                    window.layer.render(in: context!)
+                    
+                    // Restore the context
+                    context!.restoreGState();
+                }
+            }
+        }
+        let image = UIGraphicsGetImageFromCurrentImageContext();
+        return image!
     }
     
     func recognizePanDirection(translation: CGPoint) {
@@ -371,6 +427,10 @@ extension ViewController: CLLocationManagerDelegate {
                 }
 
             case let .failure(_error):
+                let alertVC = UIAlertController(title: "API Server don't let Drizzling get the data 😂", message: nil, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
+                alertVC.addAction(okAction)
+                self.present(alertVC, animated: true, completion: nil)
                 print(_error.forecastErrorDescription ?? "error")
             }
         }

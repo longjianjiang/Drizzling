@@ -12,7 +12,7 @@ struct DrizzlingRouter {
     // MARK: - URL Components
     
     var urlComponents = URLComponents()
-    let APIKey = "38e25298c490dffc"
+    let APIKey = "ee5b941953591d6b" //"38e25298c490dffc" // "ee5b941953591d6b"
     
     init() {
         urlComponents.scheme = "https"

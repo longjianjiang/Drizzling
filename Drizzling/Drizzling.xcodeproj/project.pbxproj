@@ -32,6 +32,7 @@
 		FB2C1C451E49FABC00A11521 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2C1C431E49FABC00A11521 /* LaunchScreen.storyboard */; };
 		FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C501E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift */; };
 		FB2C1C531E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2C1C511E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib */; };
+		FB56085A1EC293A000EBB5CF /* ScreenshotShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5608591EC293A000EBB5CF /* ScreenshotShareActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,6 +76,7 @@
 		FB2C1C461E49FABC00A11521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB2C1C501E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LJChooseTemperatureUnitViewController.swift; sourceTree = "<group>"; };
 		FB2C1C511E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJChooseTemperatureUnitViewController.xib; sourceTree = "<group>"; };
+		FB5608591EC293A000EBB5CF /* ScreenshotShareActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotShareActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				117C02321E5FEC1F00AB4835 /* DrizzlingModel.swift */,
+				FB5608591EC293A000EBB5CF /* ScreenshotShareActivity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,8 +269,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
@@ -286,6 +287,7 @@
 			files = (
 				FB2C1C3D1E49FABC00A11521 /* ViewController.swift in Sources */,
 				FB1198901E6A8C4400C95BF7 /* KMPlaceholderTextView.swift in Sources */,
+				FB56085A1EC293A000EBB5CF /* ScreenshotShareActivity.swift in Sources */,
 				117C02331E5FEC1F00AB4835 /* DrizzlingModel.swift in Sources */,
 				117C02311E5FEC0400AB4835 /* DrizzlingFetcher.swift in Sources */,
 				117C022F1E5FEBD600AB4835 /* DrizzlingRouter.swift in Sources */,

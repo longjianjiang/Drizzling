@@ -63,7 +63,10 @@ struct DrizzlingFetcher {
                 
                 // get the data
                 let current = CurrentCondition(JSONString:  JSON(JSONObject)["current_observation"].rawString()!)
-                completion(CurrentConditionResult.success(current!))
+                if (current != nil) {
+                    completion(CurrentConditionResult.success(current!))
+                }
+                
             }
         }
     }
