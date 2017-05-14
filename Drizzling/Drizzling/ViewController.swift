@@ -281,24 +281,22 @@ class ViewController: UIViewController {
                 text = "This is a simple weather app but can allow you write something to share with others."
             }
             
-            let appURL = URL(string: "http://www.longjianjiang.com/projects/")
+            let appURL = URL(string: "http://www.longjianjiang.com/drizzling/")
             
             
             // set up activity view controller
-            let textToShare = [text,appURL!] as [Any]
             // add the screenshot activity
             let screenshotActivity = ScreenshotShareActivity()
             screenshotActivity.completionHandler = {() in
                 let screenshotImage = self.screenshot()
                 
-                let activityItem: [AnyObject] = [screenshotImage as AnyObject]
-                let activityViewController = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
+                let activityViewController = UIActivityViewController(activityItems: [screenshotImage], applicationActivities: nil)
                 self.present(activityViewController, animated: true, completion: nil)
             }
             
             
-            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: [screenshotActivity])
-            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            let activityViewController = UIActivityViewController(activityItems: [text,appURL!], applicationActivities: [screenshotActivity])
+//            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             
             // present the view controller
             self.present(activityViewController, animated: true, completion: nil)
