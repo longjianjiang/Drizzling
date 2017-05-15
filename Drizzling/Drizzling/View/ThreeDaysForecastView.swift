@@ -88,6 +88,8 @@ class ForecastCell: UICollectionViewCell {
 class ThreeDaysForecastView: UIView {
     
     var collectionView: UICollectionView!
+    var darkStyle = false
+    
     var forecastDays: [ForecastDay]! = [] {
         didSet {
             collectionView.reloadData()
@@ -106,6 +108,9 @@ class ThreeDaysForecastView: UIView {
         collectionView.register(ForecastCell.self, forCellWithReuseIdentifier: "forecast")
         self.addSubview(collectionView)
        
+        // add observer to response change theme notification
+        NotificationCenter.default.addObserver(self, selector: #selector(changeTheme), name: NSNotification.Name(rawValue: "ChangeThemeNotification"), object: nil)
+
     }
     
     override func layoutSubviews() {
@@ -118,6 +123,12 @@ class ThreeDaysForecastView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    func changeTheme() {
+        self.collectionView.backgroundColor = UIColor.black
+        self.darkStyle = true
+        self.collectionView.reloadData()
+    }
 }
 
 extension ThreeDaysForecastView : UICollectionViewDataSource {
@@ -134,6 +145,13 @@ extension ThreeDaysForecastView : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "forecast", for: indexPath) as! ForecastCell
         if forecastDays.count > 0 {
+            if darkStyle {
+                cell.weekLabel.textColor = UIColor.white
+                cell.temperatureLabel.textColor = UIColor.white
+            } else {
+                cell.weekLabel.textColor = UIColor.black
+                cell.temperatureLabel.textColor = UIColor.black
+            }
              cell.configCell(day: (forecastDays?[indexPath.row+1])!)
         }
        
