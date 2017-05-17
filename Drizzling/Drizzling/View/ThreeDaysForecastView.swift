@@ -109,7 +109,8 @@ class ThreeDaysForecastView: UIView {
         self.addSubview(collectionView)
        
         // add observer to response change theme notification
-        NotificationCenter.default.addObserver(self, selector: #selector(changeTheme), name: NSNotification.Name(rawValue: "ChangeThemeNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeToNight), name: NSNotification.Name(rawValue: "ChangeToNightNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeToDay), name: NSNotification.Name(rawValue: "ChangeToDayNotification"), object: nil)
 
     }
     
@@ -124,9 +125,15 @@ class ThreeDaysForecastView: UIView {
     }
     
     
-    func changeTheme() {
+    func changeToNight() {
         self.collectionView.backgroundColor = UIColor.black
         self.darkStyle = true
+        self.collectionView.reloadData()
+    }
+    
+    func changeToDay() {
+        self.collectionView.backgroundColor = UIColor.white
+        self.darkStyle = false
         self.collectionView.reloadData()
     }
 }

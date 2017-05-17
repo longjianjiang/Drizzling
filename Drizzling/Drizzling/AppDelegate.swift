@@ -124,7 +124,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func isChangeTheme() {
         // when at night, send a notification to change the app theme
         if self.isBetweenFromHour(5, toHour: 19) {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeThemeNotification"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeToNightNotification"), object: nil)
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeToDayNotification"), object: nil)
         }
 
     }

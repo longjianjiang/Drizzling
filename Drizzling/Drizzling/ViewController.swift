@@ -166,9 +166,8 @@ class ViewController: UIViewController {
         }
     
         // add observer to response change theme notification
-        NotificationCenter.default.addObserver(self, selector: #selector(changeTheme), name: NSNotification.Name(rawValue: "ChangeThemeNotification"), object: nil)
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(changeToNight), name: NSNotification.Name(rawValue: "ChangeToNightNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeToDay), name: NSNotification.Name(rawValue: "ChangeToDayNotification"), object: nil)
         // add observer to share image when user did screenshot
         NotificationCenter.default.addObserver(self, selector: #selector(shareScreenshot), name: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil)
         
@@ -260,7 +259,7 @@ class ViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
-    func changeTheme() {
+    func changeToNight() {
         self.view.backgroundColor = UIColor.black
         self.shareTextview.backgroundColor = UIColor.black
         self.cityLabel.textColor = UIColor.white
@@ -268,6 +267,15 @@ class ViewController: UIViewController {
         self.temperatureConditionLabel.textColor = UIColor.white
         self.shareTextview.textColor = UIColor.white
         self.shareTextview.placeholderColor = UIColor.gray
+    }
+    func changeToDay() {
+        self.view.backgroundColor = UIColor.white
+        self.shareTextview.backgroundColor = UIColor.white
+        self.cityLabel.textColor = UIColor.black
+        self.temperatureNumberLabel.textColor = UIColor.black
+        self.temperatureConditionLabel.textColor = UIColor.black
+        self.shareTextview.textColor = UIColor.black
+        self.shareTextview.placeholderColor = UIColor(red: 190/255.0, green: 190/255.0, blue: 195/255.0, alpha: 1.0)
     }
     func showShareView() {
         if (pressShare.state == UIGestureRecognizerState.began) {
