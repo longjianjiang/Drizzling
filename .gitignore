@@ -59,7 +59,9 @@ Carthage
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
+Drizzling/fastlane/report.xml
+Drizzling/fastlane/Preview.html
+Drizzling/fastlane/screenshots
+Drizzling/fastlane/test_output
+Drizzling/fastlane/metadata
+
