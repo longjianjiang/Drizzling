@@ -33,9 +33,9 @@ class LJChooseTemperatureUnitViewController: UIViewController {
     func getSuperAttibutedSring(_ string: NSString, and superString: String) -> NSMutableAttributedString {
         let font:UIFont? = UIFont(name: "Helvetica", size:15)
         let fontSuper:UIFont? = UIFont(name: "Helvetica", size:10)
-        let attString:NSMutableAttributedString = NSMutableAttributedString(string: string as String, attributes: [NSFontAttributeName:font!,NSForegroundColorAttributeName:UIColor.white])
+        let attString:NSMutableAttributedString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey.font:font!,NSAttributedStringKey.foregroundColor:UIColor.white])
         let range = string.range(of: superString)
-        attString.setAttributes([NSFontAttributeName:fontSuper!,NSBaselineOffsetAttributeName:10,NSForegroundColorAttributeName:UIColor.white], range: range)
+        attString.setAttributes([NSAttributedStringKey.font:fontSuper!,NSAttributedStringKey.baselineOffset:10,NSAttributedStringKey.foregroundColor:UIColor.white], range: range)
         return attString
     }
     

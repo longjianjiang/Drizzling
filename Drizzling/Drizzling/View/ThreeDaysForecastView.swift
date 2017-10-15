@@ -125,13 +125,13 @@ class ThreeDaysForecastView: UIView {
     }
     
     
-    func changeToNight() {
+    @objc func changeToNight() {
         self.collectionView.backgroundColor = UIColor.black
         self.darkStyle = true
         self.collectionView.reloadData()
     }
     
-    func changeToDay() {
+    @objc func changeToDay() {
         self.collectionView.backgroundColor = UIColor.white
         self.darkStyle = false
         self.collectionView.reloadData()

@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 60*60, target: self, selector: #selector(updateHourCondition), userInfo: nil, repeats: true)
     }
     
-    func updateHourCondition() {
+    @objc func updateHourCondition() {
         self.locationManager.startUpdatingLocation()
     }
     func getTheTomorrowForecast() -> String{
@@ -252,14 +252,14 @@ class ViewController: UIViewController {
     }
 
     //MARK: - response method
-    func shareScreenshot() {
+    @objc func shareScreenshot() {
         let screenshotImage = self.screenshot()
         
         let activityItem: [AnyObject] = [screenshotImage as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
-    func changeToNight() {
+    @objc func changeToNight() {
         self.view.backgroundColor = UIColor.black
         self.shareTextview.backgroundColor = UIColor.black
         self.cityLabel.textColor = UIColor.white
@@ -268,7 +268,7 @@ class ViewController: UIViewController {
         self.shareTextview.textColor = UIColor.white
         self.shareTextview.placeholderColor = UIColor.gray
     }
-    func changeToDay() {
+    @objc func changeToDay() {
         self.view.backgroundColor = UIColor.white
         self.shareTextview.backgroundColor = UIColor.white
         self.cityLabel.textColor = UIColor.black
@@ -277,7 +277,7 @@ class ViewController: UIViewController {
         self.shareTextview.textColor = UIColor.black
         self.shareTextview.placeholderColor = UIColor(red: 190/255.0, green: 190/255.0, blue: 195/255.0, alpha: 1.0)
     }
-    func showShareView() {
+    @objc func showShareView() {
         if (pressShare.state == UIGestureRecognizerState.began) {
             print("begin press")
             
@@ -378,7 +378,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func showThreeDaysCondition(gesture: UIPanGestureRecognizer) {
+    @objc func showThreeDaysCondition(gesture: UIPanGestureRecognizer) {
         if gesture.state == .began {
             recognizePanDirection(translation: gesture.translation(in: self.view))
         }
