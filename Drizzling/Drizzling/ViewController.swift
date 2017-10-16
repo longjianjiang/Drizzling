@@ -12,7 +12,6 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 import Social
-import SnapKit
 import Kingfisher
 import UserNotifications
 

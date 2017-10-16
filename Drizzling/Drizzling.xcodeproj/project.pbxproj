@@ -7,24 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		117C02181E5ECBE200AB4835 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117C02161E5ECBC100AB4835 /* ObjectMapper.framework */; };
-		117C02191E5ECBE200AB4835 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117C02161E5ECBC100AB4835 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		117C022F1E5FEBD600AB4835 /* DrizzlingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C022E1E5FEBD600AB4835 /* DrizzlingRouter.swift */; };
 		117C02311E5FEC0400AB4835 /* DrizzlingFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C02301E5FEC0400AB4835 /* DrizzlingFetcher.swift */; };
 		117C02331E5FEC1F00AB4835 /* DrizzlingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C02321E5FEC1F00AB4835 /* DrizzlingModel.swift */; };
-		11FA07521E5BDB8C00A54697 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA07481E5BDAEE00A54697 /* Alamofire.framework */; };
-		11FA07531E5BDB8C00A54697 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA07481E5BDAEE00A54697 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		11FA07581E5BDB8C00A54697 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA074B1E5BDAEE00A54697 /* SnapKit.framework */; };
-		11FA07591E5BDB8C00A54697 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA074B1E5BDAEE00A54697 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		11FA075A1E5BDB8C00A54697 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA074C1E5BDAEE00A54697 /* SwiftyJSON.framework */; };
-		11FA075B1E5BDB8C00A54697 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11FA074C1E5BDAEE00A54697 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FB0B90C11EE52CF000900C20 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0B90C01EE52CF000900C20 /* NotificationCenter.framework */; };
-		FB0B90C41EE52CF000900C20 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0B90C31EE52CF000900C20 /* TodayViewController.swift */; };
-		FB0B90C71EE52CF000900C20 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0B90C51EE52CF000900C20 /* MainInterface.storyboard */; };
-		FB0B90CB1EE52CF000900C20 /* Drizzling.TodayWeather.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FB0B90BE1EE52CEF00900C20 /* Drizzling.TodayWeather.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BD4CD2FE44D88A129D14DFCE /* Pods_Drizzling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4970F4FC702AFF14B649D2AB /* Pods_Drizzling.framework */; };
 		FB1198691E62C43600C95BF7 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1198681E62C43500C95BF7 /* MyUtils.swift */; };
-		FB11986C1E62EEB500C95BF7 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */; };
-		FB11986D1E62EEB500C95BF7 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB1198901E6A8C4400C95BF7 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */; };
 		FB1322AB1E6AE2D40023B30A /* ThreeDaysForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1322AA1E6AE2D40023B30A /* ThreeDaysForecastView.swift */; };
 		FB1FCEE01E6BC1C000FE966B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1FCEDF1E6BC1C000FE966B /* Reachability.swift */; };
@@ -39,39 +26,13 @@
 		FB56085A1EC293A000EBB5CF /* ScreenshotShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5608591EC293A000EBB5CF /* ScreenshotShareActivity.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FB0B90C91EE52CF000900C20 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FB2C1C2F1E49FABC00A11521 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FB0B90BD1EE52CEF00900C20;
-			remoteInfo = Drizzling.TodayWeather;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		11FA075C1E5BDB8C00A54697 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				117C02191E5ECBE200AB4835 /* ObjectMapper.framework in Embed Frameworks */,
-				FB11986D1E62EEB500C95BF7 /* Kingfisher.framework in Embed Frameworks */,
-				11FA07531E5BDB8C00A54697 /* Alamofire.framework in Embed Frameworks */,
-				11FA07591E5BDB8C00A54697 /* SnapKit.framework in Embed Frameworks */,
-				11FA075B1E5BDB8C00A54697 /* SwiftyJSON.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB0B90CF1EE52CF000900C20 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				FB0B90CB1EE52CF000900C20 /* Drizzling.TodayWeather.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,11 +47,10 @@
 		11FA07481E5BDAEE00A54697 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		11FA074B1E5BDAEE00A54697 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		11FA074C1E5BDAEE00A54697 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
-		FB0B90BE1EE52CEF00900C20 /* Drizzling.TodayWeather.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Drizzling.TodayWeather.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4970F4FC702AFF14B649D2AB /* Pods_Drizzling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Drizzling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F4ECB918D3EA6C23A4A422A /* Pods-Drizzling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drizzling.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drizzling/Pods-Drizzling.debug.xcconfig"; sourceTree = "<group>"; };
+		B6690BE077641E498ECC4CBD /* Pods-Drizzling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drizzling.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drizzling/Pods-Drizzling.release.xcconfig"; sourceTree = "<group>"; };
 		FB0B90C01EE52CF000900C20 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		FB0B90C31EE52CF000900C20 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		FB0B90C61EE52CF000900C20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		FB0B90C81EE52CF000900C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB1198681E62C43500C95BF7 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
 		FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -110,23 +70,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FB0B90BB1EE52CEF00900C20 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FB0B90C11EE52CF000900C20 /* NotificationCenter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB2C1C341E49FABC00A11521 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117C02181E5ECBE200AB4835 /* ObjectMapper.framework in Frameworks */,
-				FB11986C1E62EEB500C95BF7 /* Kingfisher.framework in Frameworks */,
-				11FA07521E5BDB8C00A54697 /* Alamofire.framework in Frameworks */,
-				11FA07581E5BDB8C00A54697 /* SnapKit.framework in Frameworks */,
-				11FA075A1E5BDB8C00A54697 /* SwiftyJSON.framework in Frameworks */,
+				BD4CD2FE44D88A129D14DFCE /* Pods_Drizzling.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,22 +111,22 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
+		3346C28C75FA1AF01D749EA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F4ECB918D3EA6C23A4A422A /* Pods-Drizzling.debug.xcconfig */,
+				B6690BE077641E498ECC4CBD /* Pods-Drizzling.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FB0B90BF1EE52CF000900C20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				FB0B90C01EE52CF000900C20 /* NotificationCenter.framework */,
+				4970F4FC702AFF14B649D2AB /* Pods_Drizzling.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FB0B90C21EE52CF000900C20 /* Drizzling.TodayWeather */ = {
-			isa = PBXGroup;
-			children = (
-				FB0B90C31EE52CF000900C20 /* TodayViewController.swift */,
-				FB0B90C51EE52CF000900C20 /* MainInterface.storyboard */,
-				FB0B90C81EE52CF000900C20 /* Info.plist */,
-			);
-			path = Drizzling.TodayWeather;
 			sourceTree = "<group>";
 		};
 		FB1198671E62C36400C95BF7 /* Extension */ = {
@@ -194,9 +142,9 @@
 			isa = PBXGroup;
 			children = (
 				FB2C1C391E49FABC00A11521 /* Drizzling */,
-				FB0B90C21EE52CF000900C20 /* Drizzling.TodayWeather */,
 				FB0B90BF1EE52CF000900C20 /* Frameworks */,
 				FB2C1C381E49FABC00A11521 /* Products */,
+				3346C28C75FA1AF01D749EA4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				FB2C1C371E49FABC00A11521 /* Drizzling.app */,
-				FB0B90BE1EE52CEF00900C20 /* Drizzling.TodayWeather.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,38 +197,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FB0B90BD1EE52CEF00900C20 /* Drizzling.TodayWeather */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FB0B90CE1EE52CF000900C20 /* Build configuration list for PBXNativeTarget "Drizzling.TodayWeather" */;
-			buildPhases = (
-				FB0B90BA1EE52CEF00900C20 /* Sources */,
-				FB0B90BB1EE52CEF00900C20 /* Frameworks */,
-				FB0B90BC1EE52CEF00900C20 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Drizzling.TodayWeather;
-			productName = Drizzling.TodayWeather;
-			productReference = FB0B90BE1EE52CEF00900C20 /* Drizzling.TodayWeather.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		FB2C1C361E49FABC00A11521 /* Drizzling */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB2C1C491E49FABC00A11521 /* Build configuration list for PBXNativeTarget "Drizzling" */;
 			buildPhases = (
+				B548D5180FC0CF0D905EBAC8 /* [CP] Check Pods Manifest.lock */,
 				FB2C1C331E49FABC00A11521 /* Sources */,
 				FB2C1C341E49FABC00A11521 /* Frameworks */,
 				FB2C1C351E49FABC00A11521 /* Resources */,
-				11FA075C1E5BDB8C00A54697 /* Embed Frameworks */,
 				FB1FCEE11E6BD78000FE966B /* ShellScript */,
 				FB0B90CF1EE52CF000900C20 /* Embed App Extensions */,
+				29C9C1E10E4B08069C1BC713 /* [CP] Embed Pods Frameworks */,
+				F943E62CE274D7B8A36F759D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FB0B90CA1EE52CF000900C20 /* PBXTargetDependency */,
 			);
 			name = Drizzling;
 			productName = Drizzling;
@@ -298,11 +229,6 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Jiang;
 				TargetAttributes = {
-					FB0B90BD1EE52CEF00900C20 = {
-						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = L8723R7GLJ;
-						ProvisioningStyle = Automatic;
-					};
 					FB2C1C361E49FABC00A11521 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = L8723R7GLJ;
@@ -324,20 +250,11 @@
 			projectRoot = "";
 			targets = (
 				FB2C1C361E49FABC00A11521 /* Drizzling */,
-				FB0B90BD1EE52CEF00900C20 /* Drizzling.TodayWeather */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FB0B90BC1EE52CEF00900C20 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FB0B90C71EE52CF000900C20 /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB2C1C351E49FABC00A11521 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,35 +269,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		29C9C1E10E4B08069C1BC713 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Drizzling/Pods-Drizzling-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Drizzling/Pods-Drizzling-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B548D5180FC0CF0D905EBAC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Drizzling-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F943E62CE274D7B8A36F759D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Drizzling/Pods-Drizzling-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FB1FCEE11E6BD78000FE966B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FB0B90BA1EE52CEF00900C20 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FB0B90C41EE52CF000900C20 /* TodayViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB2C1C331E49FABC00A11521 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,23 +363,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		FB0B90CA1EE52CF000900C20 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FB0B90BD1EE52CEF00900C20 /* Drizzling.TodayWeather */;
-			targetProxy = FB0B90C91EE52CF000900C20 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		FB0B90C51EE52CF000900C20 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB0B90C61EE52CF000900C20 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
 		FB2C1C3E1E49FABC00A11521 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -438,36 +383,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FB0B90CC1EE52CF000900C20 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				DEVELOPMENT_TEAM = L8723R7GLJ;
-				INFOPLIST_FILE = Drizzling.TodayWeather/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.longjianjiang.SimpleWeather.Drizzling-TodayWeather";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		FB0B90CD1EE52CF000900C20 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				DEVELOPMENT_TEAM = L8723R7GLJ;
-				INFOPLIST_FILE = Drizzling.TodayWeather/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.longjianjiang.SimpleWeather.Drizzling-TodayWeather";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 		FB2C1C471E49FABC00A11521 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -563,8 +478,8 @@
 		};
 		FB2C1C4A1E49FABC00A11521 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F4ECB918D3EA6C23A4A422A /* Pods-Drizzling.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L8723R7GLJ;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -576,15 +491,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		FB2C1C4B1E49FABC00A11521 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6690BE077641E498ECC4CBD /* Pods-Drizzling.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L8723R7GLJ;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -596,7 +511,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -604,15 +519,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FB0B90CE1EE52CF000900C20 /* Build configuration list for PBXNativeTarget "Drizzling.TodayWeather" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FB0B90CC1EE52CF000900C20 /* Debug */,
-				FB0B90CD1EE52CF000900C20 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		FB2C1C321E49FABC00A11521 /* Build configuration list for PBXProject "Drizzling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
