@@ -151,9 +151,10 @@ class ViewController: UIViewController {
 
         self.view.backgroundColor = UIColor.white
         updateCondition()
-        setUpView()
+//        setUpView()
         
         // add the first introduction for users.
+        /*
         let isFirstTime = UserDefaults.standard.object(forKey: "FirstToUse")
         if isFirstTime == nil { // mean first time to use this app.
             self.view.addSubview(introduceView)
@@ -162,7 +163,7 @@ class ViewController: UIViewController {
             }
             UserDefaults.standard.set(false, forKey: "FirstToUse")
             UserDefaults.standard.synchronize()
-        }
+        }*/
     
         // add observer to response change theme notification
         NotificationCenter.default.addObserver(self, selector: #selector(changeToNight), name: NSNotification.Name(rawValue: "ChangeToNightNotification"), object: nil)
@@ -172,7 +173,7 @@ class ViewController: UIViewController {
         
     }
 
-   
+   /*
     func setUpView() {
         self.view.addSubview(threeDaysForecastView)
         threeDaysForecastView.backgroundColor = UIColor.red
@@ -240,7 +241,7 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(pressShare)
         self.view.addGestureRecognizer(pullDownShowThreeDays)
 
-    }
+    }*/
     
     deinit {
         timer.invalidate()
@@ -365,13 +366,13 @@ class ViewController: UIViewController {
             }else{  
                 print("dwon")
                 //向下滑动  
-                UIView.animate(withDuration: 6, animations: {
-                    self.threeDaysForecastView.snp.updateConstraints({ (maker) in
-                        maker.bottom.equalTo(self.view.snp.top).offset(150)
-                    })
-                    self.temperatureNumberLabel.isHidden = true
-                    self.temperatureConditionLabel.isHidden = true
-                })
+//                UIView.animate(withDuration: 6, animations: {
+//                    self.threeDaysForecastView.snp.updateConstraints({ (maker) in
+//                        maker.bottom.equalTo(self.view.snp.top).offset(150)
+//                    })
+//                    self.temperatureNumberLabel.isHidden = true
+//                    self.temperatureConditionLabel.isHidden = true
+//                })
 
             }  
         }
@@ -382,13 +383,13 @@ class ViewController: UIViewController {
             recognizePanDirection(translation: gesture.translation(in: self.view))
         }
         if gesture.state == .ended {
-            UIView.animate(withDuration: 15, animations: {
-                self.threeDaysForecastView.snp.updateConstraints({ (maker) in
-                    maker.bottom.equalTo(self.view.snp.top)
-                })
-                self.temperatureNumberLabel.isHidden = false
-                self.temperatureConditionLabel.isHidden = false
-            })
+//            UIView.animate(withDuration: 15, animations: {
+//                self.threeDaysForecastView.snp.updateConstraints({ (maker) in
+//                    maker.bottom.equalTo(self.view.snp.top)
+//                })
+//                self.temperatureNumberLabel.isHidden = false
+//                self.temperatureConditionLabel.isHidden = false
+//            })
         }
     }
     

@@ -44,23 +44,23 @@ class ForecastCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        weekLabel.snp.makeConstraints { (maker) in
-            maker.top.equalTo(contentView).offset(10)
-            maker.left.right.equalTo(contentView)
-            maker.height.equalTo(20)
-        }
-        
-        temperatureLabel.snp.makeConstraints { (maker) in
-            maker.top.equalTo(weekLabel.snp.bottom).offset(5)
-            maker.left.right.equalTo(contentView)
-            maker.height.equalTo(20)
-        }
-        
-        conditionImageview.snp.makeConstraints { (maker) in
-            maker.top.equalTo(temperatureLabel.snp.bottom).offset(5)
-            maker.left.right.equalTo(contentView)
-            maker.height.equalTo(40)
-        }
+//        weekLabel.snp.makeConstraints { (maker) in
+//            maker.top.equalTo(contentView).offset(10)
+//            maker.left.right.equalTo(contentView)
+//            maker.height.equalTo(20)
+//        }
+//
+//        temperatureLabel.snp.makeConstraints { (maker) in
+//            maker.top.equalTo(weekLabel.snp.bottom).offset(5)
+//            maker.left.right.equalTo(contentView)
+//            maker.height.equalTo(20)
+//        }
+//
+//        conditionImageview.snp.makeConstraints { (maker) in
+//            maker.top.equalTo(temperatureLabel.snp.bottom).offset(5)
+//            maker.left.right.equalTo(contentView)
+//            maker.height.equalTo(40)
+//        }
     }
     
     
@@ -115,9 +115,9 @@ class ThreeDaysForecastView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        collectionView.snp.makeConstraints { (maker) in
-            maker.left.bottom.right.top.equalTo(self)
-        }
+//        collectionView.snp.makeConstraints { (maker) in
+//            maker.left.bottom.right.top.equalTo(self)
+//        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

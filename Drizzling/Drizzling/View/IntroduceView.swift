@@ -52,23 +52,23 @@ class IntroduceView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        pullLabel.snp.makeConstraints { (maker) in
-            maker.left.right.equalTo(self)
-            maker.center.equalTo(self)
-            maker.height.equalTo(44)
-        }
-        
-        shareLabel.snp.makeConstraints { (maker) in
-            maker.left.right.equalTo(self)
-            maker.bottom.equalTo(pullLabel.snp.top).offset(-100)
-            maker.height.equalTo(44)
-        }
-        
-        msgLabel.snp.makeConstraints { (maker) in
-            maker.left.right.equalTo(self)
-            maker.top.equalTo(pullLabel.snp.bottom).offset(100)
-            maker.height.equalTo(44)
-        }
+//        pullLabel.snp.makeConstraints { (maker) in
+//            maker.left.right.equalTo(self)
+//            maker.center.equalTo(self)
+//            maker.height.equalTo(44)
+//        }
+//        
+//        shareLabel.snp.makeConstraints { (maker) in
+//            maker.left.right.equalTo(self)
+//            maker.bottom.equalTo(pullLabel.snp.top).offset(-100)
+//            maker.height.equalTo(44)
+//        }
+//        
+//        msgLabel.snp.makeConstraints { (maker) in
+//            maker.left.right.equalTo(self)
+//            maker.top.equalTo(pullLabel.snp.bottom).offset(100)
+//            maker.height.equalTo(44)
+//        }
     }
 
     func remove() {
