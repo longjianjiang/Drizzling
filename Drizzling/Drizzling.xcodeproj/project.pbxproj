@@ -24,6 +24,12 @@
 		FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C501E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift */; };
 		FB2C1C531E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2C1C511E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib */; };
 		FB56085A1EC293A000EBB5CF /* ScreenshotShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5608591EC293A000EBB5CF /* ScreenshotShareActivity.swift */; };
+		FB8D8CBC1F989D6C009900EE /* LJAskUseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8D8CBA1F989D6C009900EE /* LJAskUseLocationViewController.swift */; };
+		FB8D8CBD1F989D6C009900EE /* LJAskUseLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8D8CBB1F989D6C009900EE /* LJAskUseLocationViewController.xib */; };
+		FB8D8CC01F98A5BA009900EE /* LJAskNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8D8CBE1F98A5BA009900EE /* LJAskNotificationViewController.swift */; };
+		FB8D8CC11F98A5BA009900EE /* LJAskNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8D8CBF1F98A5BA009900EE /* LJAskNotificationViewController.xib */; };
+		FB8D8CC41F98A927009900EE /* LJConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8D8CC31F98A927009900EE /* LJConst.swift */; };
+		FB9D54181F98B026002F034D /* LJLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D54171F98B026002F034D /* LJLocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,19 +46,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		117C02161E5ECBC100AB4835 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
 		117C022E1E5FEBD600AB4835 /* DrizzlingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrizzlingRouter.swift; path = Drizzling/Resources/DrizzlingRouter.swift; sourceTree = SOURCE_ROOT; };
 		117C02301E5FEC0400AB4835 /* DrizzlingFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrizzlingFetcher.swift; path = Drizzling/Resources/DrizzlingFetcher.swift; sourceTree = SOURCE_ROOT; };
 		117C02321E5FEC1F00AB4835 /* DrizzlingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrizzlingModel.swift; sourceTree = "<group>"; };
-		11FA07481E5BDAEE00A54697 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
-		11FA074B1E5BDAEE00A54697 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
-		11FA074C1E5BDAEE00A54697 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		4970F4FC702AFF14B649D2AB /* Pods_Drizzling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Drizzling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F4ECB918D3EA6C23A4A422A /* Pods-Drizzling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drizzling.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drizzling/Pods-Drizzling.debug.xcconfig"; sourceTree = "<group>"; };
 		B6690BE077641E498ECC4CBD /* Pods-Drizzling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drizzling.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drizzling/Pods-Drizzling.release.xcconfig"; sourceTree = "<group>"; };
 		FB0B90C01EE52CF000900C20 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		FB1198681E62C43500C95BF7 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
-		FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
 		FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		FB1322AA1E6AE2D40023B30A /* ThreeDaysForecastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDaysForecastView.swift; sourceTree = "<group>"; };
 		FB1FCEDF1E6BC1C000FE966B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -67,6 +68,12 @@
 		FB2C1C501E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LJChooseTemperatureUnitViewController.swift; sourceTree = "<group>"; };
 		FB2C1C511E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJChooseTemperatureUnitViewController.xib; sourceTree = "<group>"; };
 		FB5608591EC293A000EBB5CF /* ScreenshotShareActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotShareActivity.swift; sourceTree = "<group>"; };
+		FB8D8CBA1F989D6C009900EE /* LJAskUseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJAskUseLocationViewController.swift; sourceTree = "<group>"; };
+		FB8D8CBB1F989D6C009900EE /* LJAskUseLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LJAskUseLocationViewController.xib; sourceTree = "<group>"; };
+		FB8D8CBE1F98A5BA009900EE /* LJAskNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJAskNotificationViewController.swift; sourceTree = "<group>"; };
+		FB8D8CBF1F98A5BA009900EE /* LJAskNotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LJAskNotificationViewController.xib; sourceTree = "<group>"; };
+		FB8D8CC31F98A927009900EE /* LJConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJConst.swift; sourceTree = "<group>"; };
+		FB9D54171F98B026002F034D /* LJLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,18 +106,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		11FA073D1E5BD86D00A54697 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				FB11986A1E62EEA900C95BF7 /* Kingfisher.framework */,
-				117C02161E5ECBC100AB4835 /* ObjectMapper.framework */,
-				11FA07481E5BDAEE00A54697 /* Alamofire.framework */,
-				11FA074B1E5BDAEE00A54697 /* SnapKit.framework */,
-				11FA074C1E5BDAEE00A54697 /* SwiftyJSON.framework */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
 		3346C28C75FA1AF01D749EA4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +129,8 @@
 			children = (
 				FB1FCEDF1E6BC1C000FE966B /* Reachability.swift */,
 				FB1198681E62C43500C95BF7 /* MyUtils.swift */,
+				FB8D8CC31F98A927009900EE /* LJConst.swift */,
+				FB9D54171F98B026002F034D /* LJLocationManager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -162,7 +159,6 @@
 				FB1198671E62C36400C95BF7 /* Extension */,
 				117C021B1E5EE8B900AB4835 /* Networking */,
 				117C02131E5ECA8100AB4835 /* Model */,
-				11FA073D1E5BD86D00A54697 /* Vendor */,
 				FB2C1C4D1E49FDE800A11521 /* Controller */,
 				FB2C1C4C1E49FDCF00A11521 /* View */,
 				FB2C1C3A1E49FABC00A11521 /* AppDelegate.swift */,
@@ -190,6 +186,10 @@
 			children = (
 				FB2C1C501E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift */,
 				FB2C1C511E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib */,
+				FB8D8CBA1F989D6C009900EE /* LJAskUseLocationViewController.swift */,
+				FB8D8CBB1F989D6C009900EE /* LJAskUseLocationViewController.xib */,
+				FB8D8CBE1F98A5BA009900EE /* LJAskNotificationViewController.swift */,
+				FB8D8CBF1F98A5BA009900EE /* LJAskNotificationViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,10 +259,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB8D8CBD1F989D6C009900EE /* LJAskUseLocationViewController.xib in Resources */,
 				FB2C1C451E49FABC00A11521 /* LaunchScreen.storyboard in Resources */,
 				FB2C1C421E49FABC00A11521 /* Assets.xcassets in Resources */,
 				FB2C1C531E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib in Resources */,
 				FB2C1C401E49FABC00A11521 /* Main.storyboard in Resources */,
+				FB8D8CC11F98A5BA009900EE /* LJAskNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,12 +355,16 @@
 				FB2C1C3D1E49FABC00A11521 /* ViewController.swift in Sources */,
 				FB1198901E6A8C4400C95BF7 /* KMPlaceholderTextView.swift in Sources */,
 				FB56085A1EC293A000EBB5CF /* ScreenshotShareActivity.swift in Sources */,
+				FB8D8CC41F98A927009900EE /* LJConst.swift in Sources */,
 				117C02331E5FEC1F00AB4835 /* DrizzlingModel.swift in Sources */,
 				117C02311E5FEC0400AB4835 /* DrizzlingFetcher.swift in Sources */,
 				117C022F1E5FEBD600AB4835 /* DrizzlingRouter.swift in Sources */,
 				FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */,
+				FB8D8CC01F98A5BA009900EE /* LJAskNotificationViewController.swift in Sources */,
 				FB1198691E62C43600C95BF7 /* MyUtils.swift in Sources */,
 				FB1322AB1E6AE2D40023B30A /* ThreeDaysForecastView.swift in Sources */,
+				FB8D8CBC1F989D6C009900EE /* LJAskUseLocationViewController.swift in Sources */,
+				FB9D54181F98B026002F034D /* LJLocationManager.swift in Sources */,
 				FB1FCF031E73BF5C00FE966B /* IntroduceView.swift in Sources */,
 				FB1FCEE01E6BC1C000FE966B /* Reachability.swift in Sources */,
 				FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */,
@@ -491,11 +497,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Drizzling/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -511,11 +517,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Drizzling/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

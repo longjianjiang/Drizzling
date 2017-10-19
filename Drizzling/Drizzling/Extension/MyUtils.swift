@@ -20,8 +20,8 @@ extension String{
         return string.substring(to: index)
     }
 }
+
 extension CAGradientLayer {
-    
     static func gradientLayer(with gradient: Gradient) -> CAGradientLayer {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [gradient.startColor.cgColor, gradient.endColor.cgColor]
@@ -29,5 +29,13 @@ extension CAGradientLayer {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1);
         gradientLayer.locations = [0.4, 1];
         return gradientLayer
+    }
+}
+
+extension Range where Bound == String.Index {
+    var nsRange:NSRange {
+        return NSRange(location: self.lowerBound.encodedOffset,
+                       length: self.upperBound.encodedOffset -
+                        self.lowerBound.encodedOffset)
     }
 }

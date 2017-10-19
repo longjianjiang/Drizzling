@@ -19,32 +19,27 @@ class LJChooseTemperatureUnitViewController: UIViewController {
         let defaults = UserDefaults.standard
 
         if sender == fahrenheitBtn {
-            defaults.set("fahrenheit", forKey: "unit")
-            defaults.synchronize()
+            defaults.set(LJConstants.UserDefaultsValue.fahrenheitUnit, forKey: LJConstants.UserDefaultsKey.unit)
         } else if sender == celsiusBtn {
-            defaults.set("celsius", forKey: "unit")
-            defaults.synchronize()
+            defaults.set(LJConstants.UserDefaultsValue.celsiusUnit, forKey: LJConstants.UserDefaultsKey.unit)
         }
         
-        
-        self.view.window?.rootViewController = ViewController()
+        view.window?.rootViewController = LJAskUseLocationViewController()
     }
    
     func getSuperAttibutedSring(_ string: String, and superString: String) -> NSMutableAttributedString {
         let font = UIFont(name: "Helvetica", size:15)
         let fontSuper = UIFont(name: "Helvetica", size:10)
         let attributedStr = NSMutableAttributedString(string: string, attributes: [
-            NSFontAttributeName: font!,
-            NSForegroundColorAttributeName: UIColor.white])
-        
-//        let attString = NSMutableAttributedString(string: string as String, attributes: [NSAttributedStringKey:font!,NSAttributedStringKey.foregroundColor:UIColor.white])
+            NSAttributedStringKey.font: font!,
+            NSAttributedStringKey.foregroundColor: UIColor.white])
+
         let range = string.range(of: superString)
         attributedStr.setAttributes([
-            NSFontAttributeName: fontSuper!,
-            NSBaselineOffsetAttributeName: 10,
-            NSForegroundColorAttributeName: UIColor.white], range: (range?.nsRange)!)
+            NSAttributedStringKey.font: fontSuper!,
+            NSAttributedStringKey.baselineOffset: 10,
+            NSAttributedStringKey.foregroundColor: UIColor.white], range: (range?.nsRange)!)
         
-//        attString.setAttributes([NSAttributedStringKey.zone:fontSuper!,NSAttributedStringKey.baselineOffset:10,NSAttributedStringKey.foregroundColor:UIColor.white], range: range)
         return attributedStr
     }
     
@@ -71,10 +66,5 @@ class LJChooseTemperatureUnitViewController: UIViewController {
         print("choose VC dealloc")
     }
 }
-extension Range where Bound == String.Index {
-    var nsRange:NSRange {
-        return NSRange(location: self.lowerBound.encodedOffset,
-                       length: self.upperBound.encodedOffset -
-                        self.lowerBound.encodedOffset)
-    }
-}
+
+

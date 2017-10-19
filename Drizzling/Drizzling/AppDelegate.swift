@@ -18,39 +18,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let reachability = Reachability()!
     
     
-    var locationManager = CLLocationManager.init()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        self.isChangeTheme() // at there notification method won't be invoked
-        if #available(iOS 10.0, *) {
-            // ask to notification
-            let center = UNUserNotificationCenter.current()
-            center.delegate = self
-            let options: UNAuthorizationOptions = [.alert, .sound, .badge]
-            center.requestAuthorization(options: options) {
-                (granted, error) in
-                if !granted {
-                    print("Something went wrong")
-                }
-            }
-        }
-        // ask to use location
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-        }
         
-        // give user to choose temperature unit
         let defaults = UserDefaults.standard
-        let obj = defaults.object(forKey: "unit")
-        if obj != nil {
-            window?.rootViewController = ViewController()
+        let unit = defaults.object(forKey: LJConstants.UserDefaultsKey.unit)
+        let askLocation = defaults.object(forKey: LJConstants.UserDefaultsKey.askLocation)
+        let askNotification = defaults.object(forKey: LJConstants.UserDefaultsKey.askNotification)
+        
+        
+        if unit != nil {
+            if askLocation != nil {
+                if askNotification != nil {
+                    window?.rootViewController = ViewController()
+                } else {
+                    window?.rootViewController = LJAskNotificationViewController()
+                }
+            } else {
+                window?.rootViewController = LJAskUseLocationViewController()
+            }
         } else {
             window?.rootViewController = LJChooseTemperatureUnitViewController()
         }
     
         // monitor the network condition
         networkMonitor()
-        
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -68,9 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-        }
+        LJLocationManager.shared.askLocation()
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -86,14 +77,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    deinit {
+        reachability.stopNotifier()
+    }
+    
+    //MARK: Public method
     func networkMonitor() {
-        
         do {
             try reachability.startNotifier()
         } catch {
             print("Unable to start notifier")
         }
-
         
         reachability.whenReachable = { reachability in
             
@@ -104,23 +98,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Reachable via Cellular")
                 }
                 
-                self.locationManager.startUpdatingLocation()
-
+               
             }
         }
-        
         reachability.whenUnreachable = { reachability in
             print("Not reachable")
-
+            
         }
-        
     }
     
-    deinit {
-        reachability.stopNotifier()
+    public static func askNotification() {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = AppDelegate()
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        center.requestAuthorization(options: options) {
+            (granted, error) in
+            if !granted {
+                print("Something went wrong")
+            }
+        }
     }
     
-    //MARK: tool method
+    //MARK: date method
     func isChangeTheme() {
         // when at night, send a notification to change the app theme
         if self.isBetweenFromHour(5, toHour: 19) {
@@ -144,7 +143,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return currentCalendar.date(from: resultComponent)!
     }
-
     func isBetweenFromHour(_ fromHour: NSInteger, toHour: NSInteger) -> Bool {
         let date1 = self.getCustomDateWithHour(fromHour)
         let date2 = self.getCustomDateWithHour(toHour)
@@ -155,9 +153,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             return false
         }
-        
-        
-        
     }
 }
 
