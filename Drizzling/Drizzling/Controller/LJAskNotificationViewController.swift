@@ -23,7 +23,7 @@ class LJAskNotificationViewController: UIViewController {
         }
         
         defaults.setValue(LJConstants.UserDefaultsValue.chooseNotification, forKey: LJConstants.UserDefaultsKey.askNotification)
-        view.window?.rootViewController = ViewController()
+        view.window?.rootViewController = LJCityListViewController()
     }
     
     

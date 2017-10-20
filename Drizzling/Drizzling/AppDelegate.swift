@@ -27,11 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let askLocation = defaults.object(forKey: LJConstants.UserDefaultsKey.askLocation)
         let askNotification = defaults.object(forKey: LJConstants.UserDefaultsKey.askNotification)
         
-        
+        // First enter app ask user do something
         if unit != nil {
             if askLocation != nil {
                 if askNotification != nil {
-                    window?.rootViewController = ViewController()
+                    window?.rootViewController = LJCityListViewController()
                 } else {
                     window?.rootViewController = LJAskNotificationViewController()
                 }
@@ -66,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         self.isChangeTheme()
-        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -103,7 +102,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         reachability.whenUnreachable = { reachability in
             print("Not reachable")
-            
         }
     }
     

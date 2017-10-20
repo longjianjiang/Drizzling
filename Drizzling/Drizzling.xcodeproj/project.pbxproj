@@ -30,6 +30,9 @@
 		FB8D8CC11F98A5BA009900EE /* LJAskNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8D8CBF1F98A5BA009900EE /* LJAskNotificationViewController.xib */; };
 		FB8D8CC41F98A927009900EE /* LJConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8D8CC31F98A927009900EE /* LJConst.swift */; };
 		FB9D54181F98B026002F034D /* LJLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D54171F98B026002F034D /* LJLocationManager.swift */; };
+		FB9D541A1F99CBFD002F034D /* LJCityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D54191F99CBFD002F034D /* LJCityListViewController.swift */; };
+		FB9D541D1F9A068C002F034D /* LJCityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D541C1F9A068C002F034D /* LJCityCollectionViewCell.swift */; };
+		FBCB536D1F9A5C080037B01C /* LJAboutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCB536C1F9A5C080037B01C /* LJAboutCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +77,9 @@
 		FB8D8CBF1F98A5BA009900EE /* LJAskNotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LJAskNotificationViewController.xib; sourceTree = "<group>"; };
 		FB8D8CC31F98A927009900EE /* LJConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJConst.swift; sourceTree = "<group>"; };
 		FB9D54171F98B026002F034D /* LJLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJLocationManager.swift; sourceTree = "<group>"; };
+		FB9D54191F99CBFD002F034D /* LJCityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJCityListViewController.swift; sourceTree = "<group>"; };
+		FB9D541C1F9A068C002F034D /* LJCityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJCityCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBCB536C1F9A5C080037B01C /* LJAboutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJAboutCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +180,7 @@
 		FB2C1C4C1E49FDCF00A11521 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB9D541B1F9A066F002F034D /* Cell */,
 				FB11988F1E6A8C4400C95BF7 /* KMPlaceholderTextView.swift */,
 				FB1322AA1E6AE2D40023B30A /* ThreeDaysForecastView.swift */,
 				FB1FCF021E73BF5C00FE966B /* IntroduceView.swift */,
@@ -190,8 +197,18 @@
 				FB8D8CBB1F989D6C009900EE /* LJAskUseLocationViewController.xib */,
 				FB8D8CBE1F98A5BA009900EE /* LJAskNotificationViewController.swift */,
 				FB8D8CBF1F98A5BA009900EE /* LJAskNotificationViewController.xib */,
+				FB9D54191F99CBFD002F034D /* LJCityListViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB9D541B1F9A066F002F034D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FB9D541C1F9A068C002F034D /* LJCityCollectionViewCell.swift */,
+				FBCB536C1F9A5C080037B01C /* LJAboutCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +376,7 @@
 				117C02331E5FEC1F00AB4835 /* DrizzlingModel.swift in Sources */,
 				117C02311E5FEC0400AB4835 /* DrizzlingFetcher.swift in Sources */,
 				117C022F1E5FEBD600AB4835 /* DrizzlingRouter.swift in Sources */,
+				FB9D541D1F9A068C002F034D /* LJCityCollectionViewCell.swift in Sources */,
 				FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */,
 				FB8D8CC01F98A5BA009900EE /* LJAskNotificationViewController.swift in Sources */,
 				FB1198691E62C43600C95BF7 /* MyUtils.swift in Sources */,
@@ -367,6 +385,8 @@
 				FB9D54181F98B026002F034D /* LJLocationManager.swift in Sources */,
 				FB1FCF031E73BF5C00FE966B /* IntroduceView.swift in Sources */,
 				FB1FCEE01E6BC1C000FE966B /* Reachability.swift in Sources */,
+				FBCB536D1F9A5C080037B01C /* LJAboutCollectionViewCell.swift in Sources */,
+				FB9D541A1F99CBFD002F034D /* LJCityListViewController.swift in Sources */,
 				FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
