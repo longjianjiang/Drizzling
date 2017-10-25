@@ -39,8 +39,8 @@ class LJAboutCollectionViewCell: UICollectionViewCell {
         contactLabel.translatesAutoresizingMaskIntoConstraints = false
         contactLabel.textAlignment = .center
         contactLabel.textColor = UIColor.black
-        contactLabel.font = UIFont.systemFont(ofSize: 15)
-        contactLabel.text = "If you have any question about this app,please contact us at brucejiang5.7@gmail.com"
+        contactLabel.text = "If you have any question about this app, please contact us at brucejiang5.7@gmail.com"
+        contactLabel.font = UIFont.systemFont(ofSize: 14)
         contactLabel.numberOfLines = 0
         contentView.addSubview(contactLabel)
         

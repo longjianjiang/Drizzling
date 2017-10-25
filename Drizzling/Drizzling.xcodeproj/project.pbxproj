@@ -18,7 +18,6 @@
 		FB1FCF031E73BF5C00FE966B /* IntroduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1FCF021E73BF5C00FE966B /* IntroduceView.swift */; };
 		FB2C1C3B1E49FABC00A11521 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C3A1E49FABC00A11521 /* AppDelegate.swift */; };
 		FB2C1C3D1E49FABC00A11521 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C3C1E49FABC00A11521 /* ViewController.swift */; };
-		FB2C1C401E49FABC00A11521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2C1C3E1E49FABC00A11521 /* Main.storyboard */; };
 		FB2C1C421E49FABC00A11521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2C1C411E49FABC00A11521 /* Assets.xcassets */; };
 		FB2C1C451E49FABC00A11521 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2C1C431E49FABC00A11521 /* LaunchScreen.storyboard */; };
 		FB2C1C521E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2C1C501E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.swift */; };
@@ -33,6 +32,7 @@
 		FB9D541A1F99CBFD002F034D /* LJCityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D54191F99CBFD002F034D /* LJCityListViewController.swift */; };
 		FB9D541D1F9A068C002F034D /* LJCityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9D541C1F9A068C002F034D /* LJCityCollectionViewCell.swift */; };
 		FBCB536D1F9A5C080037B01C /* LJAboutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCB536C1F9A5C080037B01C /* LJAboutCollectionViewCell.swift */; };
+		FBDA32D81F9C78D300990B6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBDA32D71F9C78D300990B6C /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,7 +64,6 @@
 		FB2C1C371E49FABC00A11521 /* Drizzling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drizzling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2C1C3A1E49FABC00A11521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2C1C3C1E49FABC00A11521 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FB2C1C3F1E49FABC00A11521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB2C1C411E49FABC00A11521 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB2C1C441E49FABC00A11521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB2C1C461E49FABC00A11521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		FB9D54191F99CBFD002F034D /* LJCityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJCityListViewController.swift; sourceTree = "<group>"; };
 		FB9D541C1F9A068C002F034D /* LJCityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJCityCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBCB536C1F9A5C080037B01C /* LJAboutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJAboutCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBDA32D71F9C78D300990B6C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,9 +169,9 @@
 				FB2C1C4C1E49FDCF00A11521 /* View */,
 				FB2C1C3A1E49FABC00A11521 /* AppDelegate.swift */,
 				FB2C1C3C1E49FABC00A11521 /* ViewController.swift */,
-				FB2C1C3E1E49FABC00A11521 /* Main.storyboard */,
 				FB2C1C411E49FABC00A11521 /* Assets.xcassets */,
 				FB2C1C431E49FABC00A11521 /* LaunchScreen.storyboard */,
+				FBDA32D71F9C78D300990B6C /* Main.storyboard */,
 				FB2C1C461E49FABC00A11521 /* Info.plist */,
 			);
 			path = Drizzling;
@@ -279,8 +279,8 @@
 				FB8D8CBD1F989D6C009900EE /* LJAskUseLocationViewController.xib in Resources */,
 				FB2C1C451E49FABC00A11521 /* LaunchScreen.storyboard in Resources */,
 				FB2C1C421E49FABC00A11521 /* Assets.xcassets in Resources */,
+				FBDA32D81F9C78D300990B6C /* Main.storyboard in Resources */,
 				FB2C1C531E4AD04F00A11521 /* LJChooseTemperatureUnitViewController.xib in Resources */,
-				FB2C1C401E49FABC00A11521 /* Main.storyboard in Resources */,
 				FB8D8CC11F98A5BA009900EE /* LJAskNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,14 +394,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FB2C1C3E1E49FABC00A11521 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB2C1C3F1E49FABC00A11521 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FB2C1C431E49FABC00A11521 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -517,7 +509,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Drizzling/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -537,7 +529,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Drizzling/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.longjianjiang.SimpleWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -106,15 +106,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     public static func askNotification() {
-        let center = UNUserNotificationCenter.current()
-        center.delegate = AppDelegate()
-        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
-        center.requestAuthorization(options: options) {
-            (granted, error) in
-            if !granted {
-                print("Something went wrong")
-            }
-        }
+//        let center = UNUserNotificationCenter.current()
+//        center.delegate = AppDelegate()
+//        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+//        center.requestAuthorization(options: options) {
+//            (granted, error) in
+//            if !granted {
+//                print("Something went wrong")
+//            }
+//        }
     }
     
     //MARK: date method

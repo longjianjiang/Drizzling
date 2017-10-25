@@ -28,5 +28,9 @@ struct LJConstants {
         static let chooseNotification = "kChooseNotification"
     }
     
+    struct RuntimePropertyKey {
+        static let kHighlightStrKey = UnsafePointer<Any>.init(bitPattern: "kHighlightStrKey".hashValue)
+        static let kHightlightStrTapActionKey = UnsafePointer<Any>.init(bitPattern: "kHightlightStrTapActionKey".hashValue)
+    }
 }
 

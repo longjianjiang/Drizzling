@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class LJCityListViewController: UIViewController {
 
@@ -19,7 +20,7 @@ class LJCityListViewController: UIViewController {
         label.font = UIFont.init(name: "Courier", size: 30)
         return label
     }()
-    
+      
     lazy var searchBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +29,10 @@ class LJCityListViewController: UIViewController {
     }()
     
     var cityListView: UICollectionView!
+    var locationManager: LJLocationManager!
+    var cityArray = [String]()
+//    var cityArrayObservable: Observable<[String]>!
+//    var bag = DisposeBag()
     
     //MARK: life cycle
     func setupSubview() {
@@ -56,10 +61,45 @@ class LJCityListViewController: UIViewController {
         cityListView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
+    func configLocationService() {
+        if locationManager.isLocationServiceEnable() {
+            locationManager.startUseLocation()
+        } else {
+//            let alertVC = UIAlertController(title: "Use the location show the weather where you are.", message: nil, preferredStyle: .alert)
+//            
+//            let openLocationAction = UIAlertAction(title: "Ok", style: .default) { (action: UIAlertAction) in
+//                if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+//                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+//                }
+//            }
+//            
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+//            
+//            alertVC.addAction(openLocationAction)
+//            alertVC.addAction(cancelAction)
+//            
+//            present(alertVC, animated: true, completion: nil)
+        }
+    }
+    
+    func bind() {
+//        cityArrayObservable = Observable.from(optional: cityArray)
+//        cityArrayObservable.subscribe(onNext: { [unowned self] (cityArray) in
+//            self.cityListView.reloadData()
+//        })
+//        .disposed(by: bag)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        locationManager = LJLocationManager.shared
+        locationManager.getLocationDelegate = self
         setupSubview()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configLocationService()
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,17 +113,15 @@ extension LJCityListViewController: UICollectionViewDataSource {
         let cityCell = collectionView.dequeueReusableCell(withReuseIdentifier: LJCityCollectionViewCellIdentifier, for: indexPath) as? LJCityCollectionViewCell
         let aboutCell = collectionView.dequeueReusableCell(withReuseIdentifier: LJAboutCollectionViewCellIdentifier, for: indexPath) as? LJAboutCollectionViewCell
         
-        if indexPath.row == 3 {
+        if indexPath.row == cityArray.count {
             return aboutCell!
         }
         return cityCell!
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return cityArray.count + 1
     }
-    
-    
 }
 
 extension LJCityListViewController: UICollectionViewDelegateFlowLayout {
@@ -94,6 +132,13 @@ extension LJCityListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 30
+    }
+}
+
+extension LJCityListViewController: LJLocationManagerGetLocationDelegate {
+    func locationManager(_ manager: LJLocationManager, current city: String) {
+        cityArray.append(city)
+        cityListView.reloadData()
     }
 }
 

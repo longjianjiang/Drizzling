@@ -406,7 +406,6 @@ extension ViewController: CLLocationManagerDelegate {
     
     // when the location is enabled and get the location info then will invoked.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         print("use location")
         manager.stopUpdatingLocation()
         guard let CurrentLocation = locations.last else {
